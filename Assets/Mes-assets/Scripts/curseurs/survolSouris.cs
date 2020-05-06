@@ -12,7 +12,7 @@ public class survolSouris : MonoBehaviour
 
     [Header("ajuster position barre vie")]
     //pour ajuster la position de la barre de vie dans l'inspecteur si besoin
-    public Vector3 offsetPositionBarreVie;
+    public Vector3 offsetPositionBarreVie = new Vector3(0,1.2f, 0);
 
     [Header("prefab texte")]
     //le prefab texte qui affichera l'information de l'objet/personnage
@@ -106,22 +106,21 @@ public class survolSouris : MonoBehaviour
             //la position désirée du texte à afficher à l'écran
            Vector3 posTexte = new Vector3(posObjet.x + offsetPositionBarreVie.x, posObjet.y * offsetPositionBarreVie.y, Input.mousePosition.z);
 
+
             if (barreVie && instanceBarreVie)
             {
-                    //TODO : mettre la barre de vie en position statique au milieu en haut de l'écran
-                //calculer la position de la barre de vie
-                Vector3 posBarreVie = new Vector3(posObjet.x + offsetPositionBarreVie.x, posObjet.y * offsetPositionBarreVie.y, Input.mousePosition.z);
-
-                //appliquer la position à l'instance de la barre de vie
-                instanceBarreVie.GetComponent<RectTransform>().position = posBarreVie;
 
                 //ajuster la barre de vie selon la vie de l'ennemi
                 instanceBarreVie.transform.Find("vie-pleine").gameObject.GetComponent<Image>().fillAmount = ((gameObject.GetComponent<ScriptEnnemi>().vieActuelle * 1) / gameObject.GetComponent<ScriptEnnemi>().vieMaximum);
             }
 
             if(infoTexte && instanceTexte){
-            //changer la position du texte à l'écran pour celle désirée
-            instanceTexte.GetComponent<Text>().rectTransform.position = posTexte;
+            //changer la position du texte à l'écran pour celle désirée selon si c'est un ennemi ou autre
+            if(!gameObject.CompareTag("ennemi")) {
+                instanceTexte.GetComponent<Text>().rectTransform.position = posTexte;
+            }else {
+                instanceTexte.GetComponent<Text>().rectTransform.position = instanceBarreVie.transform.position;
+            }         
 
             //changer le contenu du texte pour l'information de l'objet actuelle
             instanceTexte.GetComponent<Text>().text = gameObject.name;}
