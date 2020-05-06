@@ -47,7 +47,7 @@ public class survolSouris : MonoBehaviour
 
 
         #region barre vie
-
+        //si on a affaire a un ennemi, instancier la barre de vie
         if (gameObject.CompareTag("ennemi"))
         {
             instanceBarreVie = Instantiate(barreVie) as GameObject;
@@ -108,6 +108,7 @@ public class survolSouris : MonoBehaviour
 
             if (barreVie && instanceBarreVie)
             {
+                    //TODO : mettre la barre de vie en position statique au milieu en haut de l'écran
                 //calculer la position de la barre de vie
                 Vector3 posBarreVie = new Vector3(posObjet.x + offsetPositionBarreVie.x, posObjet.y * offsetPositionBarreVie.y, Input.mousePosition.z);
 
@@ -123,7 +124,7 @@ public class survolSouris : MonoBehaviour
             instanceTexte.GetComponent<Text>().rectTransform.position = posTexte;
 
             //changer le contenu du texte pour l'information de l'objet actuelle
-            instanceTexte.GetComponent<Text>().text = objetASurvoler.name;}
+            instanceTexte.GetComponent<Text>().text = gameObject.name;}
 
         }
     }
