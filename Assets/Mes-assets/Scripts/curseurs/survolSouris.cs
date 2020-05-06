@@ -26,11 +26,11 @@ public class survolSouris : MonoBehaviour
     //l'objet sur lequel on veut survoler et affecter le renderer
     public GameObject objetASurvoler;
 
-    [Header("instance prefab texte")]
+    [HideInInspector]
     //contiendra l'instance du prefab de texte
     public GameObject instanceTexte;
 
-    [Header("instance prefab barre vie")]
+    [HideInInspector]
     //contiendra l'instance du prefab de la barre de vie d'un perso/ennemi si besoin
     public GameObject instanceBarreVie;
 
