@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class AttaquerArme : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject refJoueur;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void OnCollisionEnter(Collision cibleTouche) {
+    public void OnCollisionEnter(Collision cibleTouche) {
 
         if(cibleTouche.gameObject.CompareTag("ennemi")) {
-            print("ayoye ca fait mal");
+
+            cibleTouche.gameObject.GetComponent<ScriptEnnemi>().vieActuelle -= refJoueur.GetComponent<ControlePerso>().dommagesAttaque;
         }
         
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -30,14 +31,20 @@ public class ControlePerso : MonoBehaviour
     //référence à l'animator du personnage
     private Animator animPerso;
 
+    [Header("Référence a l'arme")]
+    //référence au gameobject contenant le rigidbody de l'arme
+    public GameObject refArme;
+
     //spécifier dans l'inspecteur une valeur pour le calcul des dégats aux ennemis
     [Header("les dommages de chaque attaque")]
     public float dommagesAttaque;
 
     [Header("configuration du délai entre attaques")]
+    //la durée d'une attaque
+    public float dureeAttaque = 1.20f;
     public float configDelai;
     //enregistrer le délai entre 2 attaques du personnage
-    public float delaiAttaque = 0;
+    public float delaiAttaque = 1.25f;
 
     //enregistrer l'état d'attaque du joueur
     public bool enAttaque = false;
@@ -63,13 +70,15 @@ public class ControlePerso : MonoBehaviour
 
         //obtenir le composant animator afin de pouvoir modifier et commencer des animations sur le personnage
         animPerso = GetComponent<Animator>();
+
+        refArme.GetComponent<BoxCollider>().enabled = false;
     }
 
     private void Update()
     {
         //mettre à jour la barre de vie du joueur à chaque frame
         AfficherVie();
-        
+
         if (!estMort)
         {
             //calculer la distance entre la cible de la souris et le joueur
@@ -100,12 +109,13 @@ public class ControlePerso : MonoBehaviour
     }
 
     //méthode pour mettre à jour la barre de vie du joueur
-    private void AfficherVie() {
-       uiVieJoueur.GetComponent<Image>().fillAmount = ((viePersonnage * 1) / viePersonnageMax);
+    private void AfficherVie()
+    {
+        uiVieJoueur.GetComponent<Image>().fillAmount = ((viePersonnage * 1) / viePersonnageMax);
     }
 
     //méthode pour sélectionner un objet,une cible, ou un ennemi
-    private GameObject SelectCible()
+    public GameObject SelectCible()
     {
         //obtenir l'endroit ou on clique avec la souris dans l'écran
         Ray rayonSouris = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -122,6 +132,14 @@ public class ControlePerso : MonoBehaviour
                 //assigner la cible du clic à la variable qu'on va retourner
                 cibleSelect = clic.transform.gameObject;
             }
+            else
+            {
+                cibleSelect = null;
+            }
+        }
+        else
+        {
+            cibleSelect = null;
         }
 
         //retourner la cible sélectionner pour utiliser ailleurs
@@ -185,27 +203,19 @@ public class ControlePerso : MonoBehaviour
             BougerPerso();
         }
     }
-    
+
     //action du personnage lors du clic gauche de la souris sur un objet/cible/ennemi
     public void clicGauche()
     {
 
         if (Input.GetMouseButtonDown(0))
         {
-            //si la cible est un ennemi, bouger vers lui et attaquer
-            if (SelectCible() != null && SelectCible().CompareTag("ennemi"))
+
+            if (delaiAttaque <= 0)
             {
-                //si le joueur n'est pas en distance d'attaque, le faire bouger plus pres
-                if (distance >= 3 && !enAttaque)
-                {
-                    //déplacer le personnage jusqu'a la cible
-                    BougerPerso();
-                }
-                else
-                {
-                    //si le personnage est pres et immobile, alors attaquer
-                    if (!enMouvement && delaiAttaque <= 0 && !enAttaque) AttaqueBasique();
-                }
+                agentPerso.ResetPath();
+                agentPerso.isStopped = true;
+                AttaqueBasique();
             }
         }
     }
@@ -219,20 +229,48 @@ public class ControlePerso : MonoBehaviour
         //jouer l'Animation d'attaque
         animPerso.SetTrigger("siAttaque");
         //le personnage regarde dans la direction de l'attaque
-        transform.LookAt(SelectCible().transform);
-
-        //si l'animation d'attaque est finie
-        if (!animPerso.GetCurrentAnimatorStateInfo(0).IsName("arthur_attack_01"))
+        if (SelectCible() != null && SelectCible().gameObject.CompareTag("ennemi"))
         {
-            //causer des dommages à l'ennemi
-            SelectCible().GetComponent<ScriptEnnemi>().vieActuelle -= dommagesAttaque;
-
-            //on sort de l'Attaque
-            enAttaque = false;
-
-            //délai de 0.75 secondes entre chaque attaque
-            delaiAttaque = configDelai;
+            transform.LookAt(SelectCible().transform);
         }
+
+        if (enAttaque)
+        {
+
+            StartCoroutine(PrepareAttaque());
+
+        }
+    }
+
+    public IEnumerator PrepareAttaque()
+    {
+
+        //délai de 1.25 secondes entre chaque attaque
+        delaiAttaque = configDelai;
+
+        yield return new WaitForSeconds(0.40f);
+
+        refArme.GetComponent<BoxCollider>().enabled = true;
+
+        
+
+        StartCoroutine(TempsAttaque());
+
+    }
+
+    public IEnumerator TempsAttaque()
+    {
+
+
+        yield return new WaitForSeconds(dureeAttaque);
+
+        //on sort de l'Attaque
+        enAttaque = false;
+
+        refArme.GetComponent<BoxCollider>().enabled = false;
+
+        agentPerso.isStopped = false;
+
     }
 
     //gère le délai entre chaque attaque

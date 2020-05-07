@@ -148,13 +148,14 @@ public class ScriptEnnemi : MonoBehaviour
         //le personnage regarde dans la direction de l'attaque
         transform.LookAt(cible.transform);
 
+        //TODO : UTILISER UNE COROUTINE POUR LE TEMPS DE L'ANIMATION
         //si l'animation d'attaque est finie
         if (!animEnnemi.GetCurrentAnimatorStateInfo(0).IsTag("attaque"))
         {
             //causer des dommages à la cible
             cible.GetComponent<ControlePerso>().viePersonnage -= dommagesAttaque;
 
-            //délai de 4 secondes entre chaque attaque
+            //délai de 1.25 secondes entre chaque attaque
             delaiAttaque = configDelai;
 
         }
