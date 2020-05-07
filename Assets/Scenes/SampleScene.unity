@@ -841,6 +841,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 851772979}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &71375007
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1141
+  m_Height: 478
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &74764989
 GameObject:
   m_ObjectHideFlags: 0
@@ -4018,7 +4053,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 696630769}
+  m_TargetTexture: {fileID: 426688690}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -4923,6 +4958,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 415304050}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &426688690
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1141
+  m_Height: 478
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &440435529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464832, guid: b33751465783dde418b711bf5f727836,
@@ -7361,41 +7431,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef6e4b5ea964de46905e0da6279eb54, type: 3}
---- !u!84 &696630769
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1141
-  m_Height: 673
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &700219910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9531,6 +9566,7 @@ Transform:
   - {fileID: 1233475369}
   - {fileID: 1593642780}
   - {fileID: 1397582150}
+  - {fileID: 1608826574}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16107,8 +16143,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 963194227}
   outlineCamera: {fileID: 326913960}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 696630769}
-  extraRenderTexture: {fileID: 1183954679}
+  renderTexture: {fileID: 426688690}
+  extraRenderTexture: {fileID: 71375007}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18437,41 +18473,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33751465783dde418b711bf5f727836, type: 3}
---- !u!84 &1183954679
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1141
-  m_Height: 673
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1208038484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19684,8 +19685,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refAvertissement: {fileID: 1121722847931013840, guid: 6467413771a3e04408ffe6363b21c87e,
     type: 3}
-  messageAvertissement: "IL VOUS MANQUE LA BONNE CL\xC9"
-  delaiAvertissement: 2
+  messageAvertissement: "IL VOUS MANQUE LA BONNE CL\xC9 -- POUR L'INSTANT IL N'EST
+    PAS ENCORE POSSIBLE DE JETER DES ITEMS HORS DE SON INVENTAIRE DONC VOUS DEVEZ
+    RECOMMENCER SI VOUS N'AVEZ PAS LA BONNE CL\xC9"
+  delaiAvertissement: 10
 --- !u!1001 &1312246483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23767,6 +23770,81 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1606626204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1608826573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608826574}
+  - component: {fileID: 1608826576}
+  - component: {fileID: 1608826575}
+  - component: {fileID: 1608826577}
+  m_Layer: 0
+  m_Name: Evenement debut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1608826574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608826573}
+  m_LocalRotation: {x: 0.029232806, y: 0.26371446, z: -0.007989872, w: 0.9641247}
+  m_LocalPosition: {x: -420.8645, y: -183.10187, z: -549.28735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 825622585}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1608826575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608826573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6efb596d9d512cb4382cc626b49c22b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refAvertissement: {fileID: 1121722847931013840, guid: 6467413771a3e04408ffe6363b21c87e,
+    type: 3}
+  messageAvertissement: "CLIC DROIT POUR BOUGER. CLIC GAUCHE POUR ATTAQUER UN ENNEMI.
+    \"A\" & \"D\" OU LES FL\xC8CHES POUR TOURNER LA CAM\xC9RA. "
+  delaiAvertissement: 10
+--- !u!114 &1608826576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608826573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a81ee09461d438490aae69831e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1608826577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608826573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.45, y: 3.69, z: 8.47}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1613889520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31862,17 +31940,17 @@ PrefabInstance:
     - target: {fileID: 3073577535112579030, guid: cb6eb4c5cb9117049802f6e5cbaa2e92,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104.53
+      value: 85.95
       objectReference: {fileID: 0}
     - target: {fileID: 3073577535112579030, guid: cb6eb4c5cb9117049802f6e5cbaa2e92,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.33
+      value: 16.97
       objectReference: {fileID: 0}
     - target: {fileID: 3073577535112579030, guid: cb6eb4c5cb9117049802f6e5cbaa2e92,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 110.48
+      value: 84.73
       objectReference: {fileID: 0}
     - target: {fileID: 3073577535112579030, guid: cb6eb4c5cb9117049802f6e5cbaa2e92,
         type: 3}
