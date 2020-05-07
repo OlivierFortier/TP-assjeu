@@ -42,12 +42,12 @@ public class ControlePerso : MonoBehaviour
     [Header("configuration du délai entre attaques")]
     //la durée d'une attaque
     public float dureeAttaque = 1.20f;
-    public float configDelai;
+    public float configDelai = 1.25f;
     //enregistrer le délai entre 2 attaques du personnage
-    public float delaiAttaque = 1.25f;
+    [HideInInspector]public float delaiAttaque = 0f;
 
     //enregistrer l'état d'attaque du joueur
-    public bool enAttaque = false;
+    [HideInInspector]public bool enAttaque = false;
 
     [Header("état du mouvement du joueur")]
     //enregistrer l'état de mouvement du joueur
@@ -248,7 +248,7 @@ public class ControlePerso : MonoBehaviour
         //délai de 1.25 secondes entre chaque attaque
         delaiAttaque = configDelai;
 
-        yield return new WaitForSeconds(0.40f);
+        yield return new WaitForSeconds(0.70f);
 
         refArme.GetComponent<BoxCollider>().enabled = true;
 
