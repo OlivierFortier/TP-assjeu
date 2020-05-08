@@ -12,7 +12,7 @@ public class survolSouris : MonoBehaviour
 
     [Header("ajuster position barre vie")]
     //pour ajuster la position de la barre de vie dans l'inspecteur si besoin
-    public Vector3 offsetPositionBarreVie = new Vector3(0,1.2f, 0);
+    public Vector3 offsetPositionBarreVie = new Vector3(0, 1.2f, 0);
 
     [Header("prefab texte")]
     //le prefab texte qui affichera l'information de l'objet/personnage
@@ -60,11 +60,14 @@ public class survolSouris : MonoBehaviour
 
         #region texte
 
-        //instancier un texte
-        instanceTexte = Instantiate(infoTexte) as GameObject;
+        if (infoTexte)
+        {
+            //instancier un texte
+            instanceTexte = Instantiate(infoTexte) as GameObject;
 
-        //mettre l'instance de texte en enfant du canvas
-        instanceTexte.transform.SetParent(GameObject.Find("Canvas").transform, false);
+            //mettre l'instance de texte en enfant du canvas
+            instanceTexte.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        }
         #endregion
 
 
@@ -78,18 +81,22 @@ public class survolSouris : MonoBehaviour
         surSouris = false;
 
         //détruire l'instance de texte
-        if(instanceTexte)Destroy(instanceTexte);
-        
-        if(barreVie && instanceBarreVie) Destroy(instanceBarreVie.gameObject);
-        
+        if (instanceTexte) Destroy(instanceTexte);
+
+        if (barreVie && instanceBarreVie) Destroy(instanceBarreVie.gameObject);
+
     }
 
     private void Start()
     {
         //par défaut, on survole rien donc la variable est fausse
         surSouris = false;
-        //initialiser le texte à vide
-        infoTexte.GetComponent<Text>().text = "";
+
+        if (infoTexte)
+        {
+            //initialiser le texte à vide
+            infoTexte.GetComponent<Text>().text = "";
+        }
 
     }
 
@@ -101,30 +108,37 @@ public class survolSouris : MonoBehaviour
         //au survol de la souris, afficher les informations textuelles sur l'objet ou le personnage
         if (surSouris)
         {
-            //on obtient la position de l'entité/objet et on la convertit en position dans l'écran
-           Vector3 posObjet = Camera.main.WorldToScreenPoint(objetASurvoler.transform.position);
-            //la position désirée du texte à afficher à l'écran
-           Vector3 posTexte = new Vector3(posObjet.x + offsetPositionBarreVie.x, posObjet.y * offsetPositionBarreVie.y, Input.mousePosition.z);
-
-
-            if (barreVie && instanceBarreVie)
+            if (infoTexte || barreVie)
             {
+                //on obtient la position de l'entité/objet et on la convertit en position dans l'écran
+                Vector3 posObjet = Camera.main.WorldToScreenPoint(objetASurvoler.transform.position);
+                //la position désirée du texte à afficher à l'écran
+                Vector3 posTexte = new Vector3(posObjet.x + offsetPositionBarreVie.x, posObjet.y * offsetPositionBarreVie.y, Input.mousePosition.z);
 
-                //ajuster la barre de vie selon la vie de l'ennemi
-                instanceBarreVie.transform.Find("vie-pleine").gameObject.GetComponent<Image>().fillAmount = ((gameObject.GetComponent<ScriptEnnemi>().vieActuelle * 1) / gameObject.GetComponent<ScriptEnnemi>().vieMaximum);
+
+                if (barreVie && instanceBarreVie)
+                {
+
+                    //ajuster la barre de vie selon la vie de l'ennemi
+                    instanceBarreVie.transform.Find("vie-pleine").gameObject.GetComponent<Image>().fillAmount = ((gameObject.GetComponent<ScriptEnnemi>().vieActuelle * 1) / gameObject.GetComponent<ScriptEnnemi>().vieMaximum);
+                }
+
+                if (infoTexte && instanceTexte)
+                {
+                    //changer la position du texte à l'écran pour celle désirée selon si c'est un ennemi ou autre
+                    if (!gameObject.CompareTag("ennemi"))
+                    {
+                        instanceTexte.GetComponent<Text>().rectTransform.position = posTexte;
+                    }
+                    else
+                    {
+                        instanceTexte.GetComponent<Text>().rectTransform.position = instanceBarreVie.transform.position;
+                    }
+
+                    //changer le contenu du texte pour l'information de l'objet actuelle
+                    instanceTexte.GetComponent<Text>().text = gameObject.name;
+                }
             }
-
-            if(infoTexte && instanceTexte){
-            //changer la position du texte à l'écran pour celle désirée selon si c'est un ennemi ou autre
-            if(!gameObject.CompareTag("ennemi")) {
-                instanceTexte.GetComponent<Text>().rectTransform.position = posTexte;
-            }else {
-                instanceTexte.GetComponent<Text>().rectTransform.position = instanceBarreVie.transform.position;
-            }         
-
-            //changer le contenu du texte pour l'information de l'objet actuelle
-            instanceTexte.GetComponent<Text>().text = gameObject.name;}
-
         }
     }
 }

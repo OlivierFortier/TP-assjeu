@@ -15,6 +15,8 @@ public class GestionCameras : MonoBehaviour
     public int cameraActuelle = 0;
 
     private void Update() {
+
+        //TODO : raycast entre la caméra et le joueur
         
         //cycler à travers les caméras en appuyant sur "V"
         if(Input.GetKeyDown(KeyCode.V)) {
