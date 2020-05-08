@@ -1,0 +1,42 @@
+Thanks for downloading this first Premium BLUEPRINTS package.
+
+Please could you take a minute and STAR rate and possible review the package
+
+I have many Premium BLUEPRINTS package in the pipeline to land in the Asset Store.
+
+BLUEPRINTS:
+BLUEPRINTS is another word for Prefab.
+It is in essence a receipy/design/BLUEPRINT for a building /village/outpost/farmyard layout.
+These files will state on the package page what BASE normal package(s) you would need to open and be able to use them.
+
+Sword & Shield Inn package requirement:
+Village Interiors Kit v1,9 or higher
+https://www.assetstore.unity3d.com/en/#!/content/17033
+Village Exteriors Kit v1.2.2a
+https://www.assetstore.unity3d.com/en/#!/content/38045
+
+How to open the Sword & Shield Inn BLUEPRINT:
+- Just download and unpack the package.
+- Example install directory
+      Assets\3DForge\Blueprints\PremiumBlueprints\PBP_VIK_VEK\Sword&ShieldInn
+- There you have your ready use prefab that you can move to another project space if you  want.
+Basement digging:
+VERY IMPORTANT!!!
+Unity Terrain can not be pushed down below "0"
+If you plan on doing any digging out, start a terrain by using the brush method that you specify the height. Sset it to more than enough, say 7 units, set brush to max size and strength to max and raise the whole terrain surface to that height.
+This will give you more than enough room for any digging.
+It is really easy, you going to be surprised that no one did it before.
+You would use the second terrain manipulation tool, the one that you can specify the hight you want to brush/sculpt terrain to.
+Just make sure that as in the example, the depth is set to at least 3.05 to sufficiently give room for the interiors.
+The extra .05 is just to make sure that the floor tiles that will be used for the interiors will not z-fight with them.
+You can add nice large basement, the whole size of a plinth
+
+Enjoy
+Cobus
+
+Email                info@3dforge.co.za
+Twitter            @3DForge
+Facebook       https://www.facebook.com/pages/3DForge/535899169786851
+Website         http://www.3dforge.co.za/ 
+You are allowed to use the textures with the 3D model but not extract and resell the texture itself
+One or more textures on these 3D models have been created with images from CGTextures.com 
