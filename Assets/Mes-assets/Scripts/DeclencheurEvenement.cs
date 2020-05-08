@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DeclencheurEvenement : MonoBehaviour
 {
+
+    public bool detruireApres = true;
     
     //lors de la collision avec le joueur
     private void OnCollisionEnter(Collision other) {
@@ -15,8 +17,11 @@ public class DeclencheurEvenement : MonoBehaviour
 
                 avertisseur.avertir();
                 
-                //supprimer le déclencheur d'événement
+                if(detruireApres){
+                    //supprimer le déclencheur d'événement
                 Destroy(gameObject);
+                }
+                
 
             }
 
