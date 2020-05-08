@@ -6,8 +6,12 @@ public class AttaquerArme : MonoBehaviour
 {
     public GameObject refJoueur;
 
+    private void Awake() {
+        Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), refJoueur.GetComponent<CapsuleCollider>());
+    }
 
-    public void OnCollisionEnter(Collision cibleTouche) {
+
+    public void OnTriggerEnter(Collider cibleTouche) {
 
         if(cibleTouche.gameObject.CompareTag("ennemi")) {
 
