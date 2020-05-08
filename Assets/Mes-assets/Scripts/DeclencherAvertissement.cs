@@ -10,6 +10,7 @@ public class DeclencherAvertissement : MonoBehaviour
     public GameObject refAvertissement;
 
     [Header("Entrez un message d'avertissement")]
+    [TextArea(10,10)]
     public string messageAvertissement = "AVERTISSEMENT";
 
     [Header("temps d'affichage de l'avertissement")]
