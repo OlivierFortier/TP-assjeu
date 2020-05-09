@@ -16,6 +16,7 @@ TagManager:
   - personnage
   - objet
   - porte
+  - potion
   layers:
   - Default
   - TransparentFX

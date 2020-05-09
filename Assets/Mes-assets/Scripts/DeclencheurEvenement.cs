@@ -20,6 +20,8 @@ public class DeclencheurEvenement : MonoBehaviour
 
     public bool ouvrirPorte = false;
 
+    public bool utiliserPotion = false;
+
     [Header("Est-ce qu'on détruit l'événement apres ?")]
     public bool detruireApres = true;
 
@@ -40,12 +42,17 @@ public class DeclencheurEvenement : MonoBehaviour
                 }
 
                 else if (ramasserObjet) {
-                    //A FAIRE PLUS TARD
+                    
+                    DeclencherRamasserObjet();
                     
                 }
 
                 else if(ouvrirPorte) {
                     DeclencherOuvrirPorte();
+                }
+
+                else if(utiliserPotion) {
+                    DeclencherUtiliserPotion();
                 }
 
             }
@@ -72,13 +79,18 @@ public class DeclencheurEvenement : MonoBehaviour
                 }
 
                 else if (ramasserObjet) {
-                    //A FAIRE PLUS TARD
+                    
+                    DeclencherRamasserObjet();
                     
                 }
 
                 else if(ouvrirPorte) {
                     
                     DeclencherOuvrirPorte();
+                }
+
+                else if(utiliserPotion) {
+                    DeclencherUtiliserPotion();
                 }
 
             }
@@ -95,6 +107,8 @@ public class DeclencheurEvenement : MonoBehaviour
 
             if (detruireApres)
             {
+                if(gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
+                
                 //supprimer le déclencheur d'événement
                 Destroy(gameObject);
             }
@@ -103,12 +117,13 @@ public class DeclencheurEvenement : MonoBehaviour
     }
 
    public void DeclencherRamasserObjet() {
-       if (gameObject.TryGetComponent(out DeclencherAvertissement avertisseur))
+       if (gameObject.TryGetComponent(out ObjetInventaire objet))
         {
-            avertisseur.avertir();
+            objet.RamasserObjet();
 
             if (detruireApres)
             {
+                if(gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
                 //supprimer le déclencheur d'événement
                 Destroy(gameObject);
             }
@@ -123,6 +138,22 @@ public class DeclencheurEvenement : MonoBehaviour
 
             if (detruireApres)
             {
+                if(gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
+                //supprimer le déclencheur d'événement
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
+    public void DeclencherUtiliserPotion() {
+        if (gameObject.TryGetComponent(out LesPotions potion))
+        {
+            potion.UtiliserPotion();
+
+            if (detruireApres)
+            {
+                if(gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
                 //supprimer le déclencheur d'événement
                 Destroy(gameObject);
             }

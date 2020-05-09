@@ -1936,6 +1936,7 @@ MonoBehaviour:
   apparaitreTexte: 1
   ramasserObjet: 0
   ouvrirPorte: 0
+  utiliserPotion: 0
   detruireApres: 1
 --- !u!1001 &92767741
 PrefabInstance:
@@ -8892,7 +8893,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 615503827}
+  m_TargetTexture: {fileID: 431063061}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -10842,6 +10843,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 426060035}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &431063061
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1151
+  m_Height: 450
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &437181474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12593,6 +12629,10 @@ PrefabInstance:
     - target: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
       propertyPath: m_Name
       value: potion-vie
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
+      propertyPath: m_TagString
+      value: potion
       objectReference: {fileID: 0}
     - target: {fileID: 4000010533823780, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15304,6 +15344,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 583677714}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &587340943
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1151
+  m_Height: 450
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &587347161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15454,41 +15529,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 595099813}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &595850812
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1151
-  m_Height: 273
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &601193835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15896,41 +15936,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1629480627}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &615503827
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1151
-  m_Height: 273
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &621217391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18715,6 +18720,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 900281926}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &753400257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5426577560982532734, guid: 1f65bbecfd0117d479de249d37c6847b,
+    type: 3}
+  m_PrefabInstance: {fileID: 372325257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &753400258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753400257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a81ee09461d438490aae69831e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evenementCollision: 0
+  evenementClic: 1
+  apparaitreTexte: 0
+  ramasserObjet: 1
+  ouvrirPorte: 0
+  utiliserPotion: 0
+  detruireApres: 0
 --- !u!1001 &755444246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30067,8 +30097,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 963194227}
   outlineCamera: {fileID: 326913960}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 615503827}
-  extraRenderTexture: {fileID: 595850812}
+  renderTexture: {fileID: 431063061}
+  extraRenderTexture: {fileID: 587340943}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32138,16 +32168,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1023343050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd92f83b7380628428a9986d079212d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a2820fbad2f1024796462b186131787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vieRestaure: 50
+  potionDeVie: 1
+  potionDeVitesse: 0
+  potionDeForce: 0
+  vieRestaure: 25
+  vitesseAugmente: 0
+  forceAugmente: 0
 --- !u!4 &1023343054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010690109084, guid: 7cafb89b5a0f61f479d0a748962abbbc,
     type: 3}
   m_PrefabInstance: {fileID: 515233736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1023343055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023343050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a81ee09461d438490aae69831e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evenementCollision: 0
+  evenementClic: 1
+  apparaitreTexte: 0
+  ramasserObjet: 0
+  ouvrirPorte: 0
+  utiliserPotion: 1
+  detruireApres: 1
 --- !u!1001 &1023625680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36860,6 +36914,7 @@ MonoBehaviour:
   apparaitreTexte: 0
   ramasserObjet: 0
   ouvrirPorte: 1
+  utiliserPotion: 0
   detruireApres: 1
 --- !u!4 &1295831459 stripped
 Transform:
@@ -38737,6 +38792,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cdf614b79009ca49a2a5c117fb49c35, type: 3}
+--- !u!1 &1362359000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5426577560982532734, guid: 1f65bbecfd0117d479de249d37c6847b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1564764842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1362359001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362359000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a81ee09461d438490aae69831e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evenementCollision: 0
+  evenementClic: 1
+  apparaitreTexte: 0
+  ramasserObjet: 1
+  ouvrirPorte: 0
+  utiliserPotion: 0
+  detruireApres: 0
 --- !u!1001 &1366523648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45780,9 +45860,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refAvertissement: {fileID: 1121722847931013840, guid: 6467413771a3e04408ffe6363b21c87e,
     type: 3}
-  messageAvertissement: "CLIC DROIT POUR BOUGER.\n\nCLIC GAUCHE POUR ATTAQUER UN
-    ENNEMI.\n\n\"V\" POUR CHANGER DE CAM\xC9RA\n\n \"A\" & \"D\" OU LES FL\xC8CHES
-    POUR TOURNER LA CAM\xC9RA. "
+  messageAvertissement: "CLIC DROIT POUR BOUGER.\n\nCLIC GAUCHE POUR INTERRAGIR AVEC
+    DES PERSONNAGES/OBJETS OU ATTAQUER UN ENNEMI.\n\n\"V\" POUR CHANGER DE CAM\xC9RA\n\n
+    \"A\" & \"D\" OU LES FL\xC8CHES POUR TOURNER LA CAM\xC9RA. "
   delaiAvertissement: 10
 --- !u!114 &1608826576
 MonoBehaviour:
@@ -45801,6 +45881,7 @@ MonoBehaviour:
   apparaitreTexte: 1
   ramasserObjet: 0
   ouvrirPorte: 0
+  utiliserPotion: 0
   detruireApres: 1
 --- !u!65 &1608826577
 BoxCollider:
@@ -60415,6 +60496,7 @@ MonoBehaviour:
   apparaitreTexte: 0
   ramasserObjet: 0
   ouvrirPorte: 1
+  utiliserPotion: 0
   detruireApres: 0
 --- !u!114 &2088450210
 MonoBehaviour:
@@ -62842,6 +62924,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4767997248053326909}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6649910931560910552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649910931560910551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a81ee09461d438490aae69831e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evenementCollision: 0
+  evenementClic: 1
+  apparaitreTexte: 0
+  ramasserObjet: 1
+  ouvrirPorte: 0
+  utiliserPotion: 0
+  detruireApres: 0
 --- !u!4 &6649910931560910557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2189434407598395076, guid: 276182f401729ce40bc9cb84bd88f30e,

@@ -77,6 +77,11 @@ public class survolSouris : MonoBehaviour
     //lorsqu'on sort du survol de l'objet
     private void OnMouseExit()
     {
+        EnleverInfo();
+
+    }
+
+    public void EnleverInfo() {
         //mettre la variable à false
         surSouris = false;
 
@@ -84,7 +89,6 @@ public class survolSouris : MonoBehaviour
         if (instanceTexte) Destroy(instanceTexte);
 
         if (barreVie && instanceBarreVie) Destroy(instanceBarreVie.gameObject);
-
     }
 
     private void Start()

@@ -22,6 +22,8 @@ public class ScriptInventaire : MonoBehaviour
             //ajouter l'objet dans l'inventaire
             listeInventaire.Add(objet);
 
+            objet.GetComponent<survolSouris>().EnleverInfo();
+
             //parenter l'objet à l'inventaire
             objet.transform.SetParent(GameObject.Find("inventaire").transform);
 
@@ -30,6 +32,8 @@ public class ScriptInventaire : MonoBehaviour
 
             //faire disparaitre l'objet (mais il reste dans l'inventaire)
             objet.SetActive(false);
+
+            
         }
         else
         {   
