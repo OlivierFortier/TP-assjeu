@@ -43,8 +43,6 @@ public class ScriptInventaire : MonoBehaviour
         }
     }
 
-    protected GameObject yeet;
-
     //méthode pour insérer l'icone dans l'inventaire du joueur lorsqu'il ramasse un objet
     public void AjouterImageInventaire(GameObject objet, string tag = "Untagged")
     {

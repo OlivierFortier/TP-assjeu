@@ -10,8 +10,11 @@ public class Personnage : MonoBehaviour
     
     void Update()
     {
+
+
+        
         //regarder le joueur
-        transform.LookAt(refJoueur.transform);
+        transform.LookAt(new Vector3(refJoueur.transform.position.x, transform.position.y, refJoueur.transform.position.z));
         
     }
 }
