@@ -15,6 +15,7 @@ TagManager:
   - cle-porte-femme
   - personnage
   - objet
+  - porte
   layers:
   - Default
   - TransparentFX

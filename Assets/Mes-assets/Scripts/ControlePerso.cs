@@ -127,7 +127,7 @@ public class ControlePerso : MonoBehaviour
         if (Physics.Raycast(rayonSouris, out RaycastHit clic, Mathf.Infinity))
         {
             //enregistrer l'objet/ennemi/cible dans la variable si c'est quelque chose avec lequel on peut interragir
-            if (clic.transform.CompareTag("ennemi") || clic.transform.CompareTag("personnage") || clic.transform.CompareTag("objet")) //|| clic.transform.CompareTag("objet") )
+            if (clic.transform.CompareTag("ennemi") || ListeTagObjetsPersonnages.liste.Contains(clic.transform.tag)) 
             {
                 //assigner la cible du clic à la variable qu'on va retourner
                 cibleSelect = clic.transform.gameObject;

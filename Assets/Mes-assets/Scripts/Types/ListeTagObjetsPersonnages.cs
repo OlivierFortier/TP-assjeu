@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
+//liste statique qui contiens les tag des objets et personnages pour certaines interactions
 [Serializable]
-//structure qui permet de créer un genre de dictionnaire reconnaissable par unity
-// puisque unity ne prends pas en charche les dictionnaires par défaut
 public static class ListeTagObjetsPersonnages {
 
     public static List<string> liste = new List<string> {
@@ -16,7 +13,8 @@ public static class ListeTagObjetsPersonnages {
         "cle-porte-yeet",
         "cle-porte-femme",
         "personnage",
-        "objet"
+        "objet",
+        "porte"
     };
 
 }

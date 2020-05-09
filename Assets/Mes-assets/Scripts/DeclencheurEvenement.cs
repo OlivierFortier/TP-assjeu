@@ -41,12 +41,11 @@ public class DeclencheurEvenement : MonoBehaviour
 
                 else if (ramasserObjet) {
                     //A FAIRE PLUS TARD
-                    return;
+                    
                 }
 
                 else if(ouvrirPorte) {
-                    //A FAIRE PLUS TARD
-                    return;
+                    DeclencherOuvrirPorte();
                 }
 
             }
@@ -74,12 +73,12 @@ public class DeclencheurEvenement : MonoBehaviour
 
                 else if (ramasserObjet) {
                     //A FAIRE PLUS TARD
-                    return;
+                    
                 }
 
                 else if(ouvrirPorte) {
-                    //A FAIRE PLUS TARD
-                    return;
+                    
+                    DeclencherOuvrirPorte();
                 }
 
             }
@@ -93,6 +92,34 @@ public class DeclencheurEvenement : MonoBehaviour
         if (gameObject.TryGetComponent(out DeclencherAvertissement avertisseur))
         {
             avertisseur.avertir();
+
+            if (detruireApres)
+            {
+                //supprimer le déclencheur d'événement
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
+   public void DeclencherRamasserObjet() {
+       if (gameObject.TryGetComponent(out DeclencherAvertissement avertisseur))
+        {
+            avertisseur.avertir();
+
+            if (detruireApres)
+            {
+                //supprimer le déclencheur d'événement
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
+    public void DeclencherOuvrirPorte() {
+        if (gameObject.TryGetComponent(out OuvrirPorte porte))
+        {
+            porte.OuvrirLaPorte();
 
             if (detruireApres)
             {
