@@ -9,9 +9,6 @@ public class ScriptInventaire : MonoBehaviour
     //référence à l'élément UI qui averti le joueur qu'il ne peut pas ramasser l'objet car son inventaire est plein
     public GameObject avertissementInvPlein;
 
-    [TextArea(10,10)]
-    public string messageAvertissement = "avertissement";
-
     [Header("Inventaire")]
     //représentation de l'inventaire (limité à 2 places)
     public List<GameObject> listeInventaire;

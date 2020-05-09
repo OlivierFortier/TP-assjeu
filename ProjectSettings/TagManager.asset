@@ -13,6 +13,8 @@ TagManager:
   - cle-or-rien
   - cle-porte-yeet
   - cle-porte-femme
+  - personnage
+  - objet
   layers:
   - Default
   - TransparentFX

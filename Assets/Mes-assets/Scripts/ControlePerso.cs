@@ -44,10 +44,10 @@ public class ControlePerso : MonoBehaviour
     public float dureeAttaque = 1.20f;
     public float configDelai = 1.25f;
     //enregistrer le délai entre 2 attaques du personnage
-    [HideInInspector]public float delaiAttaque = 0f;
+    [HideInInspector] public float delaiAttaque = 0f;
 
     //enregistrer l'état d'attaque du joueur
-    [HideInInspector]public bool enAttaque = false;
+    [HideInInspector] public bool enAttaque = false;
 
     [Header("état du mouvement du joueur")]
     //enregistrer l'état de mouvement du joueur
@@ -127,7 +127,7 @@ public class ControlePerso : MonoBehaviour
         if (Physics.Raycast(rayonSouris, out RaycastHit clic, Mathf.Infinity))
         {
             //enregistrer l'objet/ennemi/cible dans la variable si c'est quelque chose avec lequel on peut interragir
-            if (clic.transform.CompareTag("ennemi")) //|| clic.transform.CompareTag("objet") )
+            if (clic.transform.CompareTag("ennemi") || clic.transform.CompareTag("personnage") || clic.transform.CompareTag("objet")) //|| clic.transform.CompareTag("objet") )
             {
                 //assigner la cible du clic à la variable qu'on va retourner
                 cibleSelect = clic.transform.gameObject;
@@ -210,12 +210,29 @@ public class ControlePerso : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
-            if (delaiAttaque <= 0)
+            //si c'est un personnage qu'on sélectionne en meme temps de cliquer
+            if (SelectCible() != null && ListeTagObjetsPersonnages.liste.Contains(SelectCible().tag))
             {
+                //si le joueur est loin du personnage, s'approcher de lui
+                if (distance > 5) agentPerso.SetDestination(SelectCible().transform.position);
+
+                //si le joueur est suffisament proche du personnage, déclencher l'événement de clic
+                if (distance <= 5)
+                {
+                    if (SelectCible().gameObject.TryGetComponent(out DeclencheurEvenement evenement))
+                    {
+                        evenement.EvenementCliquer();
+                    }
+                }
+
+            }// sinon, attaquer
+            else if (delaiAttaque <= 0)
+            {
+                //arreter de bouger, et attaquer
                 agentPerso.ResetPath();
                 agentPerso.isStopped = true;
                 AttaqueBasique();
+
             }
         }
     }
@@ -233,42 +250,48 @@ public class ControlePerso : MonoBehaviour
         {
             transform.LookAt(SelectCible().transform);
         }
-
+        //si on est en état d'attaque
         if (enAttaque)
         {
-
+            //commencer la gestion de l'attaque qui se fait par activation du collider de l'épée
             StartCoroutine(PrepareAttaque());
 
         }
     }
 
+    //enumerateur pour attendre qu'une partie de l'animation de l'attaque finisse pour activer le collider de l'arme
     public IEnumerator PrepareAttaque()
     {
 
         //délai de 1.25 secondes entre chaque attaque
         delaiAttaque = configDelai;
 
+        //on attent que cette partie de l'animation finisse
         yield return new WaitForSeconds(0.70f);
 
+        //on active le collider après
         refArme.GetComponent<BoxCollider>().enabled = true;
 
-        
 
+        //on commence la prochaine séquence d'attaque
         StartCoroutine(TempsAttaque());
 
     }
 
+    //enumerateur pour attendre qu'une partie de l'animation de l'attaque finisse pour désactiver le collider de l'arme
     public IEnumerator TempsAttaque()
     {
 
-
+        //on attends la durée de l'attaque
         yield return new WaitForSeconds(dureeAttaque);
 
         //on sort de l'Attaque
         enAttaque = false;
 
+        //on désactive le collider de l'arme
         refArme.GetComponent<BoxCollider>().enabled = false;
 
+        //on peut recommencer a bouger
         agentPerso.isStopped = false;
 
     }

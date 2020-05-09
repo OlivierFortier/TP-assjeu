@@ -17,6 +17,8 @@ public class DeclencherAvertissement : MonoBehaviour
     public float delaiAvertissement = 2f;
     
     public void avertir() {
+
+
         var instanceAvertissement = Instantiate(refAvertissement) as GameObject;
 
             //parenter l'avertissement au canvas
