@@ -24,7 +24,7 @@ public class DeclencherAvertissement : MonoBehaviour
 
             //positionner l'avertissement dans le canvas 
             instanceAvertissement.transform.position =
-            new Vector3(Screen.width / 3, Screen.height / 2, 0);
+            new Vector3(Screen.width * 0.75f, Screen.height / 2, 0);
              //GameObject.Find("vie-joueur").transform.position + new Vector3(0, GameObject.Find("vie-joueur").transform.localScale.y - instanceAvertissement.transform.localPosition.y, 0);
 
             //ajouter le texte du message d'avertissement défini dans l'inspecteur
