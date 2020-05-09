@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Gère les fonctionnalités de l'inventaire
+/// </summary>
 public class ScriptInventaire : MonoBehaviour
 {
     [Header("UI pour avertissement plein")]
@@ -14,6 +18,7 @@ public class ScriptInventaire : MonoBehaviour
     public List<GameObject> listeInventaire;
 
 
+    //méthode pour ajouter un objet dans l'inventaire
     public void AjouterObjetInventaire(GameObject objet, string tag = "Untagged")
     {
         //si il y a de la place dans l'inventaire (2 places)
@@ -22,6 +27,7 @@ public class ScriptInventaire : MonoBehaviour
             //ajouter l'objet dans l'inventaire
             listeInventaire.Add(objet);
 
+            //enlever l'info de l'objet sur son survol
             objet.GetComponent<survolSouris>().EnleverInfo();
 
             //parenter l'objet à l'inventaire
@@ -39,7 +45,7 @@ public class ScriptInventaire : MonoBehaviour
         {   
             //sinon, déclencher un avertissement comme quoi l'inventaire est plein
             if(gameObject.TryGetComponent(out DeclencherAvertissement avertisseur)) {
-                    avertisseur.avertir();
+                    avertisseur.Avertir();
                 }
         }
     }

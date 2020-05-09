@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Gère le fonctionnement des différentes potions.
+/// Configurable dans l'inspecteur
+/// </summary>
 public class LesPotions : MonoBehaviour
 {
     [Header("Type de potion")]

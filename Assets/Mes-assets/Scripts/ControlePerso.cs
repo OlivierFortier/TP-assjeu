@@ -93,16 +93,6 @@ public class ControlePerso : MonoBehaviour
 
             clicGauche();
 
-            //activer l'animation de marche si le personnage est en mouvement
-            if (velocitePerso.magnitude > 0)
-            {
-                enMouvement = true;
-            }
-            else
-            {
-                enMouvement = false;
-            }
-
             //activer/désactiver l'animation de mouvement
             animPerso.SetFloat("enMouvement", velocitePerso.magnitude);
         }
@@ -127,7 +117,7 @@ public class ControlePerso : MonoBehaviour
         if (Physics.Raycast(rayonSouris, out RaycastHit clic, Mathf.Infinity))
         {
             //enregistrer l'objet/ennemi/cible dans la variable si c'est quelque chose avec lequel on peut interragir
-            if (clic.transform.CompareTag("ennemi") || ListeTagObjetsPersonnages.liste.Contains(clic.transform.tag)) 
+            if (clic.transform.CompareTag("ennemi") || ListeTagObjetsPersonnages.liste.Contains(clic.transform.tag))
             {
                 //assigner la cible du clic à la variable qu'on va retourner
                 cibleSelect = clic.transform.gameObject;
@@ -219,8 +209,10 @@ public class ControlePerso : MonoBehaviour
                 //si le joueur est suffisament proche du personnage, déclencher l'événement de clic
                 if (distance <= 5)
                 {
+                    //vérifier qu'on a bien un composant de déclencheur d'événement
                     if (SelectCible().gameObject.TryGetComponent(out DeclencheurEvenement evenement))
                     {
+                        //déclencher un événement de type click
                         evenement.EvenementCliquer();
                     }
                 }

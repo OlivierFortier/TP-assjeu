@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+/// <summary>
+/// Gère les fonctionnalités des ennemis
+/// </summary>
 public class ScriptEnnemi : MonoBehaviour
 {
     #region propriétés

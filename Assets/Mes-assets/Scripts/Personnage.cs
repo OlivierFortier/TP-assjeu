@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Gère les fonctionnalités propres à un personnage non joueur qui n'est pas ennemi
+/// </summary>
 public class Personnage : MonoBehaviour
 {
 
@@ -13,14 +16,13 @@ public class Personnage : MonoBehaviour
     
     void Update()
     {
-        
+        //regarder en direction du joueur
         FaireRegarderJoueur();
-        
-        
-        
+         
     }
 
-    void FaireRegarderJoueur() {
+    //méthode pour faire regarder le personnage en direction du joueur
+    public void FaireRegarderJoueur() {
         if(regarderJoueur) {
             //regarder le joueur, seulement en bougant sur l'axe Y
             transform.LookAt(new Vector3(refJoueur.transform.position.x, transform.position.y, refJoueur.transform.position.z));

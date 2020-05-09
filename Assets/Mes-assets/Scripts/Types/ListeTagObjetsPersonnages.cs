@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-//liste statique qui contiens les tag des objets et personnages pour certaines interactions
+/// <summary>
+/// liste statique qui contiens les tag des objets et personnages pour certaines interactions
+/// </summary>
 [Serializable]
 public static class ListeTagObjetsPersonnages {
 

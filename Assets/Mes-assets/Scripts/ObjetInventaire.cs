@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Gère les fonctionnalités propres à un objet ramassable
+/// </summary>
 public class ObjetInventaire : MonoBehaviour
 {
 
@@ -16,18 +20,13 @@ public class ObjetInventaire : MonoBehaviour
         tagObjet = gameObject.tag;
     }
 
+    //méthode pour ramasser un objet
     public void RamasserObjet()
     {
-        //si le joueur touche l'objet
-        
+        //obtenir une référence à l'inventaire du joueur
+        var refInventaire = GameObject.Find("joueur").gameObject.GetComponentInChildren<ScriptInventaire>();
 
-            //obtenir une référence à l'inventaire du joueur
-            var refInventaire = GameObject.Find("joueur").gameObject.GetComponentInChildren<ScriptInventaire>();
-
-            //ajouter l'objet dans l'inventaire 
-            refInventaire.AjouterObjetInventaire(gameObject, tagObjet);
-
-
-        
+        //ajouter l'objet dans l'inventaire 
+        refInventaire.AjouterObjetInventaire(gameObject, tagObjet);
     }
 }

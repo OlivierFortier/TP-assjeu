@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script pour mettre à jour la position de l'objet vers lequel la caméra regarde à la position du joueur.
+/// Fonctionne de pair avec GestionCameras.cs & CameraPerso.cs
+/// </summary>
 public class PointeurCam : MonoBehaviour
 {
     

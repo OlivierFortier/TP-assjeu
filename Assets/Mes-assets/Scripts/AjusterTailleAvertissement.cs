@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ajuste la taille du fond du texte aux dimensions du texte
+/// </summary>
 public class AjusterTailleAvertissement : MonoBehaviour
 {
 

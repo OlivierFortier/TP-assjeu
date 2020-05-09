@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Gère la manipulation du mouvement des caméras et l'activation des différentes caméras
+/// </summary>
 public class GestionCameras : MonoBehaviour
 {
     [Header("Référence au transform du parent des caméras")]
