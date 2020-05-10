@@ -3,20 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - ennemi
-  - terrain
-  - Interact
-  - cle-or
-  - cle-argent
-  - cle-porte-village
-  - cle-or-rien
-  - cle-porte-yeet
-  - cle-porte-femme
-  - personnage
-  - objet
-  - porte
-  - potion
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -26,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - gui
+  - 
   - 
   - 
   - 
