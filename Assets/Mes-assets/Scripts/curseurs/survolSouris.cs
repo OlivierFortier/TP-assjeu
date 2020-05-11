@@ -28,18 +28,22 @@ public class survolSouris : MonoBehaviour
     //l'objet sur lequel on veut survoler et affecter le renderer
     public GameObject objetASurvoler;
 
-    //est-ce qu'on met un contour lumineux
+    //est-ce qu'on met un contour lumineux sur cet objet?
     public bool mettreContour = true;
 
+    //est-ce que le contour est déja mis pour cet objet ?
     [HideInInspector] public bool contourDejaMis = false;
 
+    //permet de sélectionner la couleur rouge pour le contour
     public bool couleurRouge = true; //0 
 
+//permet de sélectionner la couleur bleue pour le contour
     public bool couleurBleu = false; //2
 
+//permet de sélectionner la couleur verte pour le contour
     public bool couleurVert = false; //1
 
-     public List<cakeslice.Outline> listeComposanteContour;
+    public List<cakeslice.Outline> listeComposanteContour;
 
     [HideInInspector] public int couleurContour = 0;
 
@@ -183,65 +187,74 @@ public class survolSouris : MonoBehaviour
         }
     }
 
+    //méthode pour ajouter un composant outline sur un gameobject.
+    //ajoute une couleur selon celle sélectionnée dans l'inspecteur
+    public void AjouterContour(GameObject objetContour)
+    {
+        //ajoute un composant outline au gameobject
+        var contour = objetContour.AddComponent<cakeslice.Outline>();
+
+        //change sa couleur
+        contour.color = couleurContour;
+
+        //ajoute dans la liste de composante outline pour y faire référence plus tard pour activer/désactiver selon l'état du survol
+        listeComposanteContour.Add(contour);
+    }
+
+    /// <summary>
+    /// méthode pour générer dynamiquement les composants cakeslice.outline pour créer un contour sur les renderer désirés
+    /// 
+    /// fonctionne de cette manière : vérifie à plusieurs niveaux de profondeur si on a un renderer et si oui, créée un outline.
+    /// </summary>
     public void GestionContour()
     {
+        //si le contour n'es pas déja mis
         if (!contourDejaMis)
         {
+            //si on veut mettre le contour
             if (mettreContour)
-            {//activer ou désactiver le script du asset store qui produit un contour sur l'objet sélectionné
+            {
+                //si l'objet possede un composant renderer et qui n'est pas un systeme de particule
                 if (gameObject.TryGetComponent(out Renderer render) && !gameObject.TryGetComponent(out ParticleSystem part))
                 {
-                    var contoure = gameObject.AddComponent<cakeslice.Outline>();
+                    //ajouter un contour
+                    AjouterContour(gameObject);
 
-                    contoure.color = couleurContour;
-
-                    listeComposanteContour.Add(contoure);
-
-                    //contour.enabled = surSouris;
-                }
+                } //sinon
                 else
-                {
+                {   //pour chaque enfant de l'objet qui ne satisfaisait pas les conditions précédentes
                     foreach (Transform enfant in transform)
                     {
+                        //si l'objet possede un composant renderer et qui n'est pas un systeme de particule
                         if (enfant.TryGetComponent(out Renderer renderEnfant) && !enfant.TryGetComponent(out ParticleSystem partee))
                         {
-                            var contour = enfant.gameObject.AddComponent<cakeslice.Outline>();
+                            //ajouter un contour
+                            AjouterContour(enfant.gameObject);
 
-                            contour.color = couleurContour;
-
-                            listeComposanteContour.Add(contour);
-
-                            // contour.enabled = surSouris;
                         }
-
+                        //sinon
                         else
-                        {
+                        {   //pour chaque enfant de l'objet qui ne satisfaisait pas les conditions précédentes
                             foreach (Transform enfantEnfant in enfant)
                             {
+                                //si l'objet possede un composant renderer et qui n'est pas un systeme de particule
                                 if (enfantEnfant.TryGetComponent(out Renderer RenderEnfantEnfant) && !enfantEnfant.TryGetComponent(out ParticleSystem parte))
                                 {
-                                    var contouree = enfantEnfant.gameObject.AddComponent<cakeslice.Outline>();
+                                    //ajouter un contour
+                                    AjouterContour(enfantEnfant.gameObject);
 
-                                    contouree.color = couleurContour;
-
-                                    listeComposanteContour.Add(contouree);
-
-                                    //contour.enabled = surSouris;
-                                }
+                                } //sinon
                                 else
                                 {
-
+                                    //pour chaque enfant de l'objet qui ne satisfaisait pas les conditions précédentes
                                     foreach (Transform enfantEnfantEnfant in enfantEnfant)
                                     {
+                                        //si l'objet possede un composant renderer et qui n'est pas un systeme de particule
                                         if (enfantEnfantEnfant.TryGetComponent(out Renderer renderEnfantEnfantEnfant) && !enfantEnfantEnfant.TryGetComponent(out ParticleSystem parteee))
                                         {
-                                            var contoureee = enfantEnfantEnfant.gameObject.AddComponent<cakeslice.Outline>();
+                                            //ajouter un contour
+                                            AjouterContour(enfantEnfantEnfant.gameObject);
 
-                                            contoureee.color = couleurContour;
-
-                                            listeComposanteContour.Add(contoureee);
-
-                                            //contour.enabled = surSouris;
                                         }
                                     }
 
@@ -251,6 +264,7 @@ public class survolSouris : MonoBehaviour
                     }
                 }
             }
+            //on a fini de mettre les contours pour cet objet, donc le contour est déja mis pour ne pas refaire cette méthode à l'infini
             contourDejaMis = true;
         }
     }
