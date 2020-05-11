@@ -141,7 +141,6 @@ public class survolSouris : MonoBehaviour
     private void Update()
     {
 
-
         GestionContour();
 
         foreach (cakeslice.Outline unContour in listeComposanteContour)
