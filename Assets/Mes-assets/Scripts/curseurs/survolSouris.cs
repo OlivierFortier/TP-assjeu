@@ -10,9 +10,9 @@ public class survolSouris : MonoBehaviour
 {
     #region propriétés
 
-    [Header("ajuster position barre vie")]
+    [Header("ajuster position texte")]
     //pour ajuster la position de la barre de vie dans l'inspecteur si besoin
-    public Vector3 offsetPositionBarreVie = new Vector3(0, 1.2f, 0);
+    public Vector3 offsetPositionTexte = new Vector3(0, 1.2f, 0);
 
     [Header("prefab texte")]
     //le prefab texte qui affichera l'information de l'objet/personnage
@@ -107,7 +107,7 @@ public class survolSouris : MonoBehaviour
     private void Update()
     {
         //activer ou désactiver le script du asset store qui produit un contour sur l'objet sélectionné
-        objetASurvoler.GetComponent<cakeslice.Outline>().enabled = surSouris;
+        if(objetASurvoler.TryGetComponent(out cakeslice.Outline contour)) contour.enabled = surSouris;
 
         //au survol de la souris, afficher les informations textuelles sur l'objet ou le personnage
         if (surSouris)
@@ -117,7 +117,7 @@ public class survolSouris : MonoBehaviour
                 //on obtient la position de l'entité/objet et on la convertit en position dans l'écran
                 Vector3 posObjet = Camera.main.WorldToScreenPoint(objetASurvoler.transform.position);
                 //la position désirée du texte à afficher à l'écran
-                Vector3 posTexte = new Vector3(posObjet.x + offsetPositionBarreVie.x, posObjet.y * offsetPositionBarreVie.y, Input.mousePosition.z);
+                Vector3 posTexte = new Vector3(posObjet.x + offsetPositionTexte.x, posObjet.y * offsetPositionTexte.y, Input.mousePosition.z);
 
 
                 if (barreVie && instanceBarreVie)

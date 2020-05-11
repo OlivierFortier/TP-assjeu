@@ -133,7 +133,7 @@ public class ScriptEnnemi : MonoBehaviour
         transform.LookAt(cibleJoueur.transform);
 
         if(velociteEnnemi.magnitude > 0) {
-            animEnnemi.SetFloat("enMarche", velociteEnnemi.magnitude);
+            animEnnemi.SetFloat("Marche", velociteEnnemi.magnitude);
         }}
         
     }
@@ -148,7 +148,7 @@ public class ScriptEnnemi : MonoBehaviour
     {
 
         //jouer l'Animation d'attaque
-        animEnnemi.SetTrigger("isAttaque");
+        animEnnemi.SetTrigger("Attaque");
         //le personnage regarde dans la direction de l'attaque
         transform.LookAt(cible.transform);
 
@@ -201,10 +201,10 @@ public class ScriptEnnemi : MonoBehaviour
             agentEnnemi.enabled = false;
 
             //désactiver les autres animations
-            animEnnemi.SetFloat("enMarche", 0);
+            animEnnemi.SetFloat("Marche", 0);
 
             //déclencher l'animation de mort
-            animEnnemi.SetTrigger("isMort");
+            animEnnemi.SetTrigger("Mort");
 
             //désactiver le survol de la souris pour ne pas que le texte reste à l'écran
             Destroy(gameObject.GetComponent<survolSouris>().instanceTexte);
