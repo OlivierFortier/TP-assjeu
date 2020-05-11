@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// Classe pour gérer le survol des entités et objets avec la souris et les mettre en surbrillance et afficher le nom
@@ -22,9 +24,24 @@ public class survolSouris : MonoBehaviour
     //le prefab de barre de vie pour la vie des personnages/ennemis, etc si besoin
     public GameObject barreVie;
 
-    [Header("gameobject à affecter le renderer")]
+    [Header("Configuration du renderer et de la couleur")]
     //l'objet sur lequel on veut survoler et affecter le renderer
     public GameObject objetASurvoler;
+
+    //est-ce qu'on met un contour lumineux
+    public bool mettreContour = true;
+
+    [HideInInspector] public bool contourDejaMis = false;
+
+    public bool couleurRouge = true; //0 
+
+    public bool couleurBleu = false; //2
+
+    public bool couleurVert = false; //1
+
+     public List<cakeslice.Outline> listeComposanteContour;
+
+    [HideInInspector] public int couleurContour = 0;
 
     [HideInInspector]
     //contiendra l'instance du prefab de texte
@@ -81,7 +98,8 @@ public class survolSouris : MonoBehaviour
 
     }
 
-    public void EnleverInfo() {
+    public void EnleverInfo()
+    {
         //mettre la variable à false
         surSouris = false;
 
@@ -89,6 +107,15 @@ public class survolSouris : MonoBehaviour
         if (instanceTexte) Destroy(instanceTexte);
 
         if (barreVie && instanceBarreVie) Destroy(instanceBarreVie.gameObject);
+    }
+
+    public void choisirCouleurContour()
+    {
+
+        if (couleurRouge) couleurContour = 0;
+        else if (couleurVert) couleurContour = 1;
+        else if (couleurBleu) couleurContour = 2;
+
     }
 
     private void Start()
@@ -102,12 +129,22 @@ public class survolSouris : MonoBehaviour
             infoTexte.GetComponent<Text>().text = "";
         }
 
+        choisirCouleurContour();
+
+
     }
 
     private void Update()
     {
-        //activer ou désactiver le script du asset store qui produit un contour sur l'objet sélectionné
-        if(objetASurvoler.TryGetComponent(out cakeslice.Outline contour)) contour.enabled = surSouris;
+
+
+        GestionContour();
+
+        foreach (cakeslice.Outline unContour in listeComposanteContour)
+        {
+            unContour.enabled = surSouris;
+
+        }
 
         //au survol de la souris, afficher les informations textuelles sur l'objet ou le personnage
         if (surSouris)
@@ -143,6 +180,78 @@ public class survolSouris : MonoBehaviour
                     instanceTexte.GetComponent<Text>().text = gameObject.name;
                 }
             }
+        }
+    }
+
+    public void GestionContour()
+    {
+        if (!contourDejaMis)
+        {
+            if (mettreContour)
+            {//activer ou désactiver le script du asset store qui produit un contour sur l'objet sélectionné
+                if (gameObject.TryGetComponent(out Renderer render) && !gameObject.TryGetComponent(out ParticleSystem part))
+                {
+                    var contoure = gameObject.AddComponent<cakeslice.Outline>();
+
+                    contoure.color = couleurContour;
+
+                    listeComposanteContour.Add(contoure);
+
+                    //contour.enabled = surSouris;
+                }
+                else
+                {
+                    foreach (Transform enfant in transform)
+                    {
+                        if (enfant.TryGetComponent(out Renderer renderEnfant) && !enfant.TryGetComponent(out ParticleSystem partee))
+                        {
+                            var contour = enfant.gameObject.AddComponent<cakeslice.Outline>();
+
+                            contour.color = couleurContour;
+
+                            listeComposanteContour.Add(contour);
+
+                            // contour.enabled = surSouris;
+                        }
+
+                        else
+                        {
+                            foreach (Transform enfantEnfant in enfant)
+                            {
+                                if (enfantEnfant.TryGetComponent(out Renderer RenderEnfantEnfant) && !enfantEnfant.TryGetComponent(out ParticleSystem parte))
+                                {
+                                    var contouree = enfantEnfant.gameObject.AddComponent<cakeslice.Outline>();
+
+                                    contouree.color = couleurContour;
+
+                                    listeComposanteContour.Add(contouree);
+
+                                    //contour.enabled = surSouris;
+                                }
+                                else
+                                {
+
+                                    foreach (Transform enfantEnfantEnfant in enfantEnfant)
+                                    {
+                                        if (enfantEnfantEnfant.TryGetComponent(out Renderer renderEnfantEnfantEnfant) && !enfantEnfantEnfant.TryGetComponent(out ParticleSystem parteee))
+                                        {
+                                            var contoureee = enfantEnfantEnfant.gameObject.AddComponent<cakeslice.Outline>();
+
+                                            contoureee.color = couleurContour;
+
+                                            listeComposanteContour.Add(contoureee);
+
+                                            //contour.enabled = surSouris;
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            contourDejaMis = true;
         }
     }
 }

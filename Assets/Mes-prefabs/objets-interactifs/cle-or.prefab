@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5426577560982693946}
   - component: {fileID: -7088477965958362930}
   - component: {fileID: -6026511800418225820}
+  - component: {fileID: 7203382574264911130}
   m_Layer: 0
   m_Name: cle-or
   m_TagString: cle-or
@@ -105,13 +106,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a731d48443421c643b2028843c44c363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetPositionBarreVie: {x: 0, y: 1.2, z: 0}
+  offsetPositionTexte: {x: 0, y: 1.2, z: 0}
   infoTexte: {fileID: 8666885834595796661, guid: faf6d1b64a4f8fa4399dd1599bfc9735,
     type: 3}
   barreVie: {fileID: 0}
   objetASurvoler: {fileID: 5426577560982730118}
+  mettreContour: 1
+  contourDejaMis: 0
+  couleurRouge: 0
+  couleurBleu: 1
+  couleurVert: 0
+  listeComposanteContour: []
+  couleurContour: 0
   instanceTexte: {fileID: 0}
   instanceBarreVie: {fileID: 0}
+--- !u!114 &7203382574264911130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426577560982532734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a81ee09461d438490aae69831e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evenementCollision: 0
+  evenementClic: 1
+  apparaitreTexte: 0
+  ramasserObjet: 1
+  ouvrirPorte: 0
+  utiliserPotion: 0
+  detruireApres: 0
 --- !u!1 &5426577560982730118
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +150,6 @@ GameObject:
   - component: {fileID: 5426577560982797214}
   - component: {fileID: 5426577560979406440}
   - component: {fileID: 5426577560980547576}
-  - component: {fileID: 871031515704650965}
   m_Layer: 0
   m_Name: pPlane3
   m_TagString: Untagged
@@ -192,19 +218,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &871031515704650965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5426577560982730118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 2
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []

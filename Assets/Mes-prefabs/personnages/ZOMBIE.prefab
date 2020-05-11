@@ -662,7 +662,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3590437701754745855}
   - component: {fileID: 9136486645573162592}
-  - component: {fileID: 7938115006616264738}
   m_Layer: 0
   m_Name: ZOMBIE
   m_TagString: Untagged
@@ -790,22 +789,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.005478114, y: 0.026793845, z: 0.0000002682209}
     m_Extent: {x: 0.9206203, y: 0.20534852, z: 0.71729696}
   m_DirtyAABB: 0
---- !u!114 &7938115006616264738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3089748108475520050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!1 &3151125706694552263
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +921,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -958,12 +941,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a731d48443421c643b2028843c44c363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetPositionBarreVie: {x: 0, y: 1.25, z: 0}
+  offsetPositionTexte: {x: 0, y: 1.2, z: 0}
   infoTexte: {fileID: 8666885834595796661, guid: faf6d1b64a4f8fa4399dd1599bfc9735,
     type: 3}
   barreVie: {fileID: 5805333806188677980, guid: e74d7d4a5f5384b41a847d33c4612794,
     type: 3}
-  objetASurvoler: {fileID: 3089748108475520050}
+  objetASurvoler: {fileID: 3210615259152379109}
+  mettreContour: 1
+  contourDejaMis: 0
+  couleurRouge: 1
+  couleurBleu: 0
+  couleurVert: 0
+  listeComposanteContour: []
+  couleurContour: 0
   instanceTexte: {fileID: 0}
   instanceBarreVie: {fileID: 0}
 --- !u!114 &2627479728871239435
