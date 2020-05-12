@@ -140,11 +140,13 @@ public class survolSouris : MonoBehaviour
 
     private void Update()
     {
-
+        //appeler la méthode qui s'occupe de la gestion et création des contours lumineux
         GestionContour();
 
+        //pour chaque contour dans la liste des contours
         foreach (cakeslice.Outline unContour in listeComposanteContour)
-        {
+        {   
+            //activer/désactiver le contour selon l'état du survol
             unContour.enabled = surSouris;
 
         }
