@@ -46,7 +46,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: -203655887218126122, guid: b80d42d89753b9d469efccbf465fa309,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +84,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: femme-paysanne
+  m_Name: paysanne
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Marche
@@ -147,7 +148,7 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2693422590006669165}
-    m_Position: {x: 390, y: 130, z: 0}
+    m_Position: {x: 390, y: 140, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

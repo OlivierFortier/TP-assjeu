@@ -1,22 +1,17 @@
 fileFormatVersion: 2
-guid: b80d42d89753b9d469efccbf465fa309
+guid: b041ae44af588bd439dd9ac160dd9bea
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
     second: Idle
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Girl
-    second: {fileID: 2100000, guid: 80042eca7e4031e4cbfb7a748bd4a64b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -44,7 +39,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 475
+      lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
