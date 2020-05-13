@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: bandit-2
+  m_Controller: {fileID: 9100000, guid: e428ec84f0af15741a7f2116b2744fd5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: ffb52de28a74f9a4db6826035943e0bf,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 260131549a2bba44084899a2a009f65c,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: d5c5bd9484745104283c4ab96a1f711a,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 98a8ef81515ada447b52554ce923f1fc,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: b8c49deeb46131b44a055fa6bf4a09c3,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 66b70ff0abea5c94da9213c19ca0ddac,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: fb13b1e1b40f9ed47a0033b59fa114d3,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: a818ed68c28e9c746bb72137c5369a2d,
+      type: 3}

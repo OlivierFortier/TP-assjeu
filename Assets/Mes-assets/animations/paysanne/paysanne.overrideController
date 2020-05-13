@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: paysanne
+  m_Controller: {fileID: 9100000, guid: e9e83fcc23d35e448a209a8b3cf8ba0c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 50e5848e7645ca34fa06e0e141a7a879,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: c17c994de19e6a9439dab002ae1ed0bb,
+      type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: b041ae44af588bd439dd9ac160dd9bea,
+      type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: b80d42d89753b9d469efccbf465fa309,
+      type: 3}
