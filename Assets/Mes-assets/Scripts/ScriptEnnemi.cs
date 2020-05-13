@@ -67,6 +67,14 @@ public class ScriptEnnemi : MonoBehaviour
         //assigner le composant animator pour gérer les animations
         animEnnemi = gameObject.GetComponent<Animator>();
 
+        if(gameObject.TryGetComponent(out Animator leAnim)) {
+            animEnnemi = leAnim;
+        }
+        else {
+           animEnnemi = gameObject.GetComponentInChildren<Animator>();
+        }
+        
+
         //initialiser la vie actuelle
         vieActuelle = vieMaximum;
         
