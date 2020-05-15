@@ -11,7 +11,7 @@ public class ScriptEnnemi : MonoBehaviour
 {
     #region propriétés
     //référence au gameobject du personnage du joueur
-    public GameObject cibleJoueur;
+    public GameObject cibleAttaque;
 
     public bool toucheJoueur = false;
 
@@ -73,6 +73,9 @@ public class ScriptEnnemi : MonoBehaviour
         else {
            animEnnemi = gameObject.GetComponentInChildren<Animator>();
         }
+
+        //aller chercher le joueur comme cible de défaut par find si il n'est pas établi dans l'inspecteur
+        cibleAttaque = GameObject.Find("joueur");
         
 
         //initialiser la vie actuelle
@@ -93,7 +96,7 @@ public class ScriptEnnemi : MonoBehaviour
             velociteEnnemi = agentEnnemi.velocity;
 
             //calcul de la distance entre l'ennemi et le joueur
-            distanceJoueur = DistanceAvecCible(cibleJoueur);
+            distanceJoueur = DistanceAvecCible(cibleAttaque);
 
             if(distanceJoueur < distanceAgression) {
                 agresseJoueur = true;
@@ -104,7 +107,7 @@ public class ScriptEnnemi : MonoBehaviour
             Bouger();
 
             if(toucheJoueur && delaiAttaque <= 0) {
-                Attaquer(cibleJoueur);
+                Attaquer(cibleAttaque);
             }
 
         }
@@ -134,11 +137,11 @@ public class ScriptEnnemi : MonoBehaviour
         if (distanceJoueur >= 2)
         {
             //positionner l'ennemi vers la position du joueur
-            agentEnnemi.SetDestination(cibleJoueur.transform.position);
+            agentEnnemi.SetDestination(cibleAttaque.transform.position);
         }
 
         //regarder vers le joueur
-        transform.LookAt(cibleJoueur.transform);
+        transform.LookAt(cibleAttaque.transform);
 
         if(velociteEnnemi.magnitude > 0) {
             animEnnemi.SetFloat("Marche", velociteEnnemi.magnitude);

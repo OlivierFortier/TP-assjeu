@@ -15,6 +15,7 @@ TagManager:
   - porte
   - cle-or-rien
   - cle-porte-arene
+  - point-instance
   layers:
   - Default
   - TransparentFX

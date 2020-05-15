@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 7938115007001694472}
   - component: {fileID: 2627479728871239435}
   m_Layer: 0
-  m_Name: ZOMBIE
+  m_Name: Zombie
   m_TagString: ennemi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,7 +926,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.03
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7938115007001694472
@@ -968,8 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeadd673bd52b1419a8d6b53f1ede2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cibleJoueur: {fileID: 7098628329512156581, guid: 18a75b7c06e4a67449e96bd3f901e026,
-    type: 3}
+  cibleAttaque: {fileID: 0}
   toucheJoueur: 0
   vieActuelle: 0
   vieMaximum: 30
