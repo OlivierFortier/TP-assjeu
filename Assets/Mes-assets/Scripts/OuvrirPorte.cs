@@ -19,10 +19,11 @@ public class OuvrirPorte : MonoBehaviour
     public bool porteEstOuverte = false;
 
     //méthode pour effectuer une ouverture de porte selon la clé que le joueur possède
-    public void OuvrirLaPorte() {
+    public void OuvrirLaPorte()
+    {
         //si le joueur déclenche cet événement
 
-        if(!porteEstOuverte)
+        if (!porteEstOuverte)
         {
             //obtenir la référence au script de l'inventaire
             var inv = GameObject.Find("joueur").GetComponentInChildren<ScriptInventaire>();
@@ -37,18 +38,37 @@ public class OuvrirPorte : MonoBehaviour
                 inv.EnleverObjetInventaire(cleQuiOuvreLaPorte, cleQuiOuvreLaPorte.GetComponent<ObjetInventaire>().tagObjet);
 
                 //supprimer le gameobject de détection d'événement
-               // Destroy(gameObject);
-               porteEstOuverte = true;
+                // Destroy(gameObject);
+                porteEstOuverte = true;
 
             }//sinon afficher un message d'avertissement
-            else {
+            else
+            {
 
-                if(gameObject.TryGetComponent(out DeclencherAvertissement avertisseur)) {
+                if (gameObject.TryGetComponent(out DeclencherAvertissement avertisseur))
+                {
                     avertisseur.Avertir();
                 }
-            }}
+            }
+        }
 
-        
+
+    }
+
+    //méthode pour fermer une porte
+    public void FermerLaPorte()
+    {
+        //si la porte est ouverte
+        if (porteEstOuverte)
+        {
+
+            //la porte se ferme par rotation
+            porteAouvrir.transform.Rotate(new Vector3(0, -180f, 0), Space.Self);
+
+            porteEstOuverte = false;
+
+        }
+
     }
 
 }

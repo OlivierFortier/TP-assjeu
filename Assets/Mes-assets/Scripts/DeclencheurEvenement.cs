@@ -30,13 +30,19 @@ public class DeclencheurEvenement : MonoBehaviour
     //est-ce qu'on veut utiliser une potion
     public bool utiliserPotion = false;
 
+    //est-ce qu'on veut fermer une porte ?
+    public bool fermerPorte = false;
+
+    //référence de la porte à fermer , si besoin
+    public GameObject porteAFermer;
+
     //est-ce qu'on détruit l'objet après l'événement ?
     [Header("Est-ce qu'on détruit l'événement apres ?")]
     public bool detruireApres = true;
 
 
     //lors de la collision avec le joueur
-    private void OnCollisionEnter(Collision other)
+    public void OnCollisionEnter(Collision other)
     {
         //si c'est un événement qu'on déclenche en collision
         if (evenementCollision)
@@ -66,6 +72,9 @@ public class DeclencheurEvenement : MonoBehaviour
                 else if (utiliserPotion)
                 {
                     DeclencherUtiliserPotion();
+                }
+                else if (fermerPorte) {
+                    DeclencherFermerPorte();
                 }
 
             }
@@ -110,6 +119,9 @@ public class DeclencheurEvenement : MonoBehaviour
                 else if (utiliserPotion)
                 {
                     DeclencherUtiliserPotion();
+                }
+                else if (fermerPorte) {
+                    DeclencherFermerPorte();
                 }
 
             }
@@ -175,6 +187,25 @@ public class DeclencheurEvenement : MonoBehaviour
         {
             //ouvrir la porte
             porte.OuvrirLaPorte();
+
+            //détruire l'objet apres si besoin
+            if (detruireApres)
+            {
+                //si on a un composant de survol, enlever l'information qu'elle affiche avant de détruire
+                if (gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
+                //supprimer le déclencheur d'événement
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
+    public void DeclencherFermerPorte() {
+        // vérifier qu'on a un composant d'ouverture de porte
+        if (porteAFermer.TryGetComponent(out OuvrirPorte porte))
+        {
+            //ouvrir la porte
+            porte.FermerLaPorte();
 
             //détruire l'objet apres si besoin
             if (detruireApres)

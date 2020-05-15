@@ -41,12 +41,12 @@ public class GestionCameras : MonoBehaviour
 
         //tourner la caméra à droite si on appuie sur "D" ou flèche de droite
         if(controlesCamHor > 0) {
-            refTransformCamera.transform.Rotate(new Vector3(0, 0.5f, 0));
+            refTransformCamera.transform.Rotate(new Vector3(0, 1.0f, 0));
             
         }
         //tourner la caméra à gauche si on appuie sur "D" ou flèche de gauche
         else if(controlesCamHor < 0) {
-            refTransformCamera.transform.Rotate(new Vector3(0, -0.5f, 0));
+            refTransformCamera.transform.Rotate(new Vector3(0, -1.0f, 0));
             
         }
 
