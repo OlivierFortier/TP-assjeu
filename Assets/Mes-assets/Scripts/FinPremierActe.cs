@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Script pour gérer le déroulement de la fin du premier acte/jeu
+/// 
+/// Author : Olivier Fortier
+/// Date : 2020-05-16
+/// </summary>
 public class FinPremierActe : MonoBehaviour
 {
 
@@ -18,7 +24,7 @@ public class FinPremierActe : MonoBehaviour
             //déclenche le dialogue de fin du jeu
             GetComponent<DeclencherAvertissement>().Avertir();
 
-
+            //on charge la scene de fin dans 5 secondes
             StartCoroutine(FinActe());
 
         }
@@ -27,12 +33,11 @@ public class FinPremierActe : MonoBehaviour
     //méthode pour terminer l'acte 1 / le jeu
     IEnumerator FinActe() {
 
+        //désactiver le collider pour ne pas activer ce code deux fois de suite
         GetComponent<BoxCollider>().enabled = false;
 
         //apres 5 secondes, terminer le jeu
         yield return new WaitForSeconds(5f);
-
-        //configurer la fin du jeu
 
         //charger la scene de fin
         SceneManager.LoadScene("SceneFin");
