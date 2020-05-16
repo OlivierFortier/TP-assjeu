@@ -15,6 +15,24 @@ public class ScriptCombatArene : MonoBehaviour
 
     public GameObject porteArene;
 
+    private bool areneTerminer = false;
+
+    public GameObject evenementFinArene;
+
+    private void Awake() {
+        evenementFinArene.SetActive(false);
+    }
+
+    private void Start() {
+        foreach (Transform enfant in transform)
+        {
+
+            enfant.GetComponent<Renderer>().enabled = false;
+        }
+
+        
+
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -32,18 +50,28 @@ public class ScriptCombatArene : MonoBehaviour
 
         if (refCombatantsArene.GetComponent<InstancierAuxPoints>().nombreObjetsInstanciesTotal >= 15)
         {
-
-            porteArene.transform.Rotate(new Vector3(0, 180f, 0), Space.Self);
-
-            refCombatantsArene.GetComponent<InstancierAuxPoints>().enabled = false;
-            refPotionsArene.GetComponent<InstancierAuxPoints>().enabled = false;
-
-            PlacerChefCompagnie();
-
-            PlacerSceptre();
+            if(!areneTerminer)
+                FinCombatArene();
 
 
         }
+    }
+
+    void FinCombatArene()
+    {
+
+        evenementFinArene.SetActive(true);
+
+        porteArene.transform.Rotate(new Vector3(0, 180f, 0), Space.Self);
+
+        refCombatantsArene.GetComponent<InstancierAuxPoints>().enabled = false;
+        refPotionsArene.GetComponent<InstancierAuxPoints>().enabled = false;
+
+        PlacerChefCompagnie();
+
+        PlacerSceptre();
+
+        areneTerminer = true;
     }
 
     void PlacerChefCompagnie()
@@ -52,6 +80,8 @@ public class ScriptCombatArene : MonoBehaviour
         var posChef = transform.GetChild(0).transform.position;
 
         var chefSageCompagnie = Instantiate(prefabChefSageCompagnie, posChef, Quaternion.identity);
+
+        chefSageCompagnie.gameObject.name = prefabChefSageCompagnie.gameObject.name;
 
         NavMeshHit closestHit;
 
@@ -67,6 +97,8 @@ public class ScriptCombatArene : MonoBehaviour
         var posSceptre = transform.GetChild(1).transform.position;
 
         var sceptre = Instantiate(prefabSceptreGagner, posSceptre, Quaternion.identity);
+
+        sceptre.gameObject.name = prefabSceptreGagner.gameObject.name;
 
         NavMeshHit closestHit;
 

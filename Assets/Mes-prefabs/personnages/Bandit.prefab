@@ -525,7 +525,7 @@ MonoBehaviour:
   velociteEnnemi: {x: 0, y: 0, z: 0}
   enMouvement: 0
   distanceJoueur: 0
-  distanceAgression: 20
+  distanceAgression: 100
   agresseJoueur: 0
 --- !u!114 &487649148181198492
 MonoBehaviour:

@@ -16,6 +16,7 @@ TagManager:
   - cle-or-rien
   - cle-porte-arene
   - point-instance
+  - sceptre
   layers:
   - Default
   - TransparentFX

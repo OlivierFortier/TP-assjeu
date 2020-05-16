@@ -198,8 +198,14 @@ public class ControlePerso : MonoBehaviour
     public void clicGauche()
     {
 
+
         if (Input.GetMouseButtonDown(0))
         {
+
+            EffetSouris();
+
+            
+
             //si c'est un personnage qu'on sélectionne en meme temps de cliquer
             if (SelectCible() != null && ListeTagObjetsPersonnages.liste.Contains(SelectCible().tag))
             {
@@ -245,6 +251,7 @@ public class ControlePerso : MonoBehaviour
         //si on est en état d'attaque
         if (enAttaque)
         {
+            transform.LookAt(GameObject.Find("particulesClicSouris").transform);
             //commencer la gestion de l'attaque qui se fait par activation du collider de l'épée
             StartCoroutine(PrepareAttaque());
 

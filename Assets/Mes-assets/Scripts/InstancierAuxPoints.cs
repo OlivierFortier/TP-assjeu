@@ -12,9 +12,11 @@ public class InstancierAuxPoints : MonoBehaviour
 
     public List<GameObject> listeObjetsInstances;
 
-    [HideInInspector] public int nombreObjetsInstanciesTotal = 0;
+   public int nombreObjetsInstanciesTotal = 0;
 
-    public int maximumObjets = 5;
+    public int maximumObjetsEnMemeTemps = 5;
+
+    public int maxObjetsTotal = 15;
 
     [Header("Configuration du délai min et max entre les instanciations")]
     public float delaiMin = 1f;
@@ -38,11 +40,13 @@ public class InstancierAuxPoints : MonoBehaviour
 
     private void Update()
     {
+        if(tempsEcoule > 0)
+            EcoulerTemps();
 
-        EcoulerTemps();
+        
 
 
-        if (listeObjetsInstances.Count < maximumObjets && tempsEcoule <= 0)
+        if (listeObjetsInstances.Count < maximumObjetsEnMemeTemps && nombreObjetsInstanciesTotal <= maxObjetsTotal && tempsEcoule <= 0)
         {
             ApparaitreObjet();
         }

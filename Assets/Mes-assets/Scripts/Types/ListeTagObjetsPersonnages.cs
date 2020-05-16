@@ -18,7 +18,8 @@ public static class ListeTagObjetsPersonnages {
         "objet",
         "porte",
         "potion",
-        "cle-porte-arene"
+        "cle-porte-arene",
+        "sceptre"
     };
 
 }
