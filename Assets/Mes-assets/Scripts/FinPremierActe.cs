@@ -19,12 +19,15 @@ public class FinPremierActe : MonoBehaviour
             GetComponent<DeclencherAvertissement>().Avertir();
 
 
+            StartCoroutine(FinActe());
 
         }
     }
 
     //méthode pour terminer l'acte 1 / le jeu
     IEnumerator FinActe() {
+
+        GetComponent<BoxCollider>().enabled = false;
 
         //apres 5 secondes, terminer le jeu
         yield return new WaitForSeconds(5f);
