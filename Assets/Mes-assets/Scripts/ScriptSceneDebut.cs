@@ -14,6 +14,8 @@ public class ScriptSceneDebut : MonoBehaviour
 
     public GameObject boutonJouer;
 
+    public GameObject infoIntro;
+
     public void ValiderNom() {
 
         string nomEntre = monInput.GetComponent<InputField>().text;
@@ -27,6 +29,8 @@ public class ScriptSceneDebut : MonoBehaviour
             nomDuJoueur = monInput.GetComponent<InputField>().text;
 
             monInput.SetActive(false);
+
+            infoIntro.SetActive(true);
 
            boutonJouer.SetActive(true);
         }
