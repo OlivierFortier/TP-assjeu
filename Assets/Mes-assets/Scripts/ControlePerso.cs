@@ -201,7 +201,7 @@ public class ControlePerso : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
+            //jouer l'effet de clic de souris
             EffetSouris();
 
             
@@ -250,7 +250,7 @@ public class ControlePerso : MonoBehaviour
         }
         //si on est en état d'attaque
         if (enAttaque)
-        {
+        {   //regarder dans la direction du clic de la souris
             transform.LookAt(GameObject.Find("particulesClicSouris").transform);
             //commencer la gestion de l'attaque qui se fait par activation du collider de l'épée
             StartCoroutine(PrepareAttaque());
