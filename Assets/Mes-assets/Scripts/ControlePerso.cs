@@ -129,7 +129,7 @@ public class ControlePerso : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         //recharcher la scene de jeu
-        SceneManager.LoadScene("SceneJeu");
+        SceneManager.LoadScene("SceneFin");
     }
 
     //méthode pour mettre à jour la barre de vie du joueur
