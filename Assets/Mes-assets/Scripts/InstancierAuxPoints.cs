@@ -12,6 +12,8 @@ public class InstancierAuxPoints : MonoBehaviour
 
     public List<GameObject> listeObjetsInstances;
 
+    [HideInInspector] public int nombreObjetsInstanciesTotal = 0;
+
     public int maximumObjets = 5;
 
     [Header("Configuration du délai min et max entre les instanciations")]
@@ -45,6 +47,12 @@ public class InstancierAuxPoints : MonoBehaviour
             ApparaitreObjet();
         }
 
+        foreach (var item in listeObjetsInstances)
+        {
+            if(item == null)
+                listeObjetsInstances.Remove(item);
+        }
+
 
 
 
@@ -67,9 +75,10 @@ public class InstancierAuxPoints : MonoBehaviour
 
         instanceObjet.transform.rotation = endroitAleatoire.transform.rotation;
 
-        instanceObjet.GetComponent<NavMeshAgent>().enabled = false;
-
-        instanceObjet.GetComponent<NavMeshAgent>().enabled = true;
+        if(instanceObjet.TryGetComponent(out NavMeshAgent agentInstance)) {
+            agentInstance.enabled = false;
+            agentInstance.enabled = true;
+        }
 
         instanceObjet.gameObject.name = prefabAleatoire.gameObject.name;
 
@@ -80,6 +89,8 @@ public class InstancierAuxPoints : MonoBehaviour
             instanceObjet.transform.position = closestHit.position;
         }
         listeObjetsInstances.Add(instanceObjet);
+
+        nombreObjetsInstanciesTotal++;
 
         tempsEcoule = Random.Range(delaiMin, delaiMax);
 
