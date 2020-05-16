@@ -17,6 +17,9 @@ public class ControlePerso : MonoBehaviour
 
     [Header("information sur la vie")]
 
+    //référence au prefab interface de mort
+    public GameObject prefabUIMort;
+
     //référence a l'objet UI de la vie du joueur
     public GameObject uiVieJoueur;
 
@@ -118,6 +121,9 @@ public class ControlePerso : MonoBehaviour
         animPerso.SetTrigger("Mort");
 
         //activer l'animation et message de mort
+        var uiMort = Instantiate(prefabUIMort) as GameObject;
+        //le parenter au canvas
+        uiMort.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
         //attends 5 secondes
         yield return new WaitForSeconds(5f);
