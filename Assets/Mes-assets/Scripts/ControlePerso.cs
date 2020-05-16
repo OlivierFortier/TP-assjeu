@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /**
  * Author: Olivier Fortier
@@ -62,6 +63,11 @@ public class ControlePerso : MonoBehaviour
     //enregistrer l'état de vie ou de mort du personnage
     private bool estMort = false;
 
+    private void Awake()
+    {
+        //initialisation de la vie
+        viePersonnage = viePersonnageMax;
+    }
 
     private void Start()
     {
@@ -81,6 +87,13 @@ public class ControlePerso : MonoBehaviour
 
         if (!estMort)
         {
+
+            //si on atteint 0 vie, on meurt
+            if (viePersonnage <= 0)
+            {
+                estMort = true; 
+                StartCoroutine(PersoMort());
+            }
             //calculer la distance entre la cible de la souris et le joueur
             distance = Vector3.Distance(transform.position, SelectCible() != null ? SelectCible().transform.position : Vector3.zero);
 
@@ -96,6 +109,21 @@ public class ControlePerso : MonoBehaviour
             //activer/désactiver l'animation de mouvement
             animPerso.SetFloat("enMouvement", velocitePerso.magnitude);
         }
+    }
+
+    //méthode pour la gestion de la mort
+    public IEnumerator PersoMort()
+    {
+        //active l'animation de mort
+        animPerso.SetTrigger("Mort");
+
+        //activer l'animation et message de mort
+
+        //attends 5 secondes
+        yield return new WaitForSeconds(5f);
+
+        //recharcher la scene de jeu
+        SceneManager.LoadScene("SceneJeu");
     }
 
     //méthode pour mettre à jour la barre de vie du joueur
@@ -204,7 +232,7 @@ public class ControlePerso : MonoBehaviour
             //jouer l'effet de clic de souris
             EffetSouris();
 
-            
+
 
             //si c'est un personnage qu'on sélectionne en meme temps de cliquer
             if (SelectCible() != null && ListeTagObjetsPersonnages.liste.Contains(SelectCible().tag))

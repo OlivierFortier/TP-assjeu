@@ -33,6 +33,9 @@ public class ScriptCombatArene : MonoBehaviour
     //référence à l'événement déclenché à la fin du combat
     public GameObject evenementFinArene;
 
+    //référence a l'objet qui contient l'événement de la fin de l'acte
+    public GameObject evenementFinActe;
+
     private void Awake()
     {
         //on désactive l'événement de fin du combat, on va l'activer plus tard
@@ -99,6 +102,9 @@ public class ScriptCombatArene : MonoBehaviour
 
         //l'arene est terminée
         areneTerminer = true;
+
+        //on active l'événement de fin de l'acte, déclenché quand le joueur sort de l'arene
+        evenementFinActe.SetActive(true);
     }
 
     //méthode pour instancier le chef de la compagnie

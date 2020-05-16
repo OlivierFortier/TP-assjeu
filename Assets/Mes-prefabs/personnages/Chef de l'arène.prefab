@@ -1661,9 +1661,10 @@ MonoBehaviour:
     type: 3}
   messageAvertissement: "Ha ha ha ! Ca faisait longtemps que je n'ai pas assist\xE9
     \xE0 un aussi bon combat ! Tu t'es tr\xE8s bien d\xE9brouill\xE9, Paladin. La
-    lumi\xE8re est certainement avec toi.\n\nTiens, prends ce sceptre puissant. Gr\xE2ce
-    \xE0 celui-ci , j'ai pu compl\xE9ter l'ascension de la montagne, il y a de cela
-    bien des lustres.\n\nQue la lumi\xE8re te guide dans ta qu\xEAte."
+    lumi\xE8re est certainement avec toi.\n\nTiens, prends ce sceptre puissant qui
+    est derri\xE8re moi. Gr\xE2ce \xE0 celui-ci , j'ai pu compl\xE9ter l'ascension
+    de la montagne, il y a de cela bien des lustres.\n\nQue la lumi\xE8re te guide
+    dans ta qu\xEAte."
   delaiAvertissement: 10
 --- !u!114 &168068007078805083
 MonoBehaviour:
