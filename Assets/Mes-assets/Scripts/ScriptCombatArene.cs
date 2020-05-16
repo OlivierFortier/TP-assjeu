@@ -9,11 +9,11 @@ public class ScriptCombatArene : MonoBehaviour
 
     public GameObject refPotionsArene;
 
-    public GameObject prefabCleSortirArene;
-
     public GameObject prefabSceptreGagner;
 
     public GameObject prefabChefSageCompagnie;
+
+    public GameObject porteArene;
 
 
     private void OnCollisionEnter(Collision other)
@@ -22,6 +22,8 @@ public class ScriptCombatArene : MonoBehaviour
         {
             refCombatantsArene.GetComponent<InstancierAuxPoints>().enabled = true;
             refPotionsArene.GetComponent<InstancierAuxPoints>().enabled = true;
+
+
         }
     }
 
@@ -31,20 +33,46 @@ public class ScriptCombatArene : MonoBehaviour
         if (refCombatantsArene.GetComponent<InstancierAuxPoints>().nombreObjetsInstanciesTotal >= 15)
         {
 
+            porteArene.transform.Rotate(new Vector3(0, 180f, 0), Space.Self);
+
             refCombatantsArene.GetComponent<InstancierAuxPoints>().enabled = false;
             refPotionsArene.GetComponent<InstancierAuxPoints>().enabled = false;
 
-            var sceptre = Instantiate(prefabSceptreGagner, transform.position, Quaternion.identity);
+            PlacerChefCompagnie();
 
-            var chefSageCompagnie = Instantiate(prefabChefSageCompagnie, transform.position, Quaternion.identity);
+            PlacerSceptre();
 
-            NavMeshHit closestHit;
 
-            if (NavMesh.SamplePosition(chefSageCompagnie.transform.position, out closestHit, 10f, NavMesh.AllAreas))
-            {
-                chefSageCompagnie.transform.position = closestHit.position;
-            }
+        }
+    }
 
+    void PlacerChefCompagnie()
+    {
+
+        var posChef = transform.GetChild(0).transform.position;
+
+        var chefSageCompagnie = Instantiate(prefabChefSageCompagnie, posChef, Quaternion.identity);
+
+        NavMeshHit closestHit;
+
+        if (NavMesh.SamplePosition(chefSageCompagnie.transform.position, out closestHit, 10f, NavMesh.AllAreas))
+        {
+            chefSageCompagnie.transform.position = closestHit.position;
+        }
+    }
+
+    void PlacerSceptre()
+    {
+
+        var posSceptre = transform.GetChild(1).transform.position;
+
+        var sceptre = Instantiate(prefabSceptreGagner, posSceptre, Quaternion.identity);
+
+        NavMeshHit closestHit;
+
+        if (NavMesh.SamplePosition(sceptre.transform.position, out closestHit, 10f, NavMesh.AllAreas))
+        {
+            sceptre.transform.position = closestHit.position;
         }
     }
 
