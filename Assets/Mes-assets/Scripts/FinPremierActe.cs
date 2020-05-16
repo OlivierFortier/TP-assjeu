@@ -32,7 +32,7 @@ public class FinPremierActe : MonoBehaviour
         //configurer la fin du jeu
 
         //charger la scene de fin
-        //SceneManager.LoadScene("SceneFin");
+        SceneManager.LoadScene("SceneFin");
 
     }
 
