@@ -96,6 +96,10 @@ public class ScriptCombatArene : MonoBehaviour
     //méthode pour déclencher la fin du combat de l'arène
     void FinCombatArene()
     {
+        //on désactive le collider pour ne pas activer l'événement 2 fois de suite
+        var coll = GetComponent<BoxCollider>();
+        coll.enabled = false;
+
         //on active l'objet d'événement de fin d'arène
         evenementFinArene.SetActive(true);
 
