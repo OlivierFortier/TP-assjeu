@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script pour déclencher la cinématique de survol de la ville
+/// </summary>
 public class ScriptEntrerVille : MonoBehaviour
 {
 
@@ -9,6 +12,7 @@ public class ScriptEntrerVille : MonoBehaviour
     public GameObject cameraSurvolVille;
 
     private void OnCollisionEnter(Collision autreObjet) {
+        //quand on rentre en collision avec le joueur
         if(autreObjet.gameObject.name == "joueur") {
             //on désactive le collider pour ne pas activer cet événement plusieurs fois
             GetComponent<BoxCollider>().enabled = false;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script apelle quand la cinématique de la ville est terminée pour retourner à la caméra normale
+/// </summary>
 public class ScriptTerminerCinematique : MonoBehaviour
 {
     
