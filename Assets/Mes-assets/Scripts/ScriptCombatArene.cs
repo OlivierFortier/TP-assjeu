@@ -36,6 +36,15 @@ public class ScriptCombatArene : MonoBehaviour
     //référence a l'objet qui contient l'événement de la fin de l'acte
     public GameObject evenementFinActe;
 
+    //référence à l'objet musique qui fais jouer la musique en 2D
+    public GameObject objetMusique;
+
+    //référence a la musique qu'on fera jouer pendant le combat d'arene
+    public AudioClip musiqueArene;
+
+    //référence à la musique normale pour le remettre quand l'arene est finie
+    public AudioClip musiqueNormale;
+
     private void Awake()
     {
         //on désactive l'événement de fin du combat, on va l'activer plus tard
@@ -63,6 +72,9 @@ public class ScriptCombatArene : MonoBehaviour
             refCombatantsArene.GetComponent<InstancierAuxPoints>().enabled = true;
             refPotionsArene.GetComponent<InstancierAuxPoints>().enabled = true;
 
+            objetMusique.GetComponent<AudioSource>().clip = musiqueArene;
+
+            objetMusique.GetComponent<AudioSource>().Play();
 
         }
     }
@@ -102,6 +114,11 @@ public class ScriptCombatArene : MonoBehaviour
 
         //l'arene est terminée
         areneTerminer = true;
+
+        //remettre la musique a normal
+        objetMusique.GetComponent<AudioSource>().clip = musiqueNormale;
+
+        objetMusique.GetComponent<AudioSource>().Play();
 
         //on active l'événement de fin de l'acte, déclenché quand le joueur sort de l'arene
         evenementFinActe.SetActive(true);

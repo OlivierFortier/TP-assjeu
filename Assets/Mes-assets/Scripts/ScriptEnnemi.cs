@@ -34,12 +34,12 @@ public class ScriptEnnemi : MonoBehaviour
     //ajuster dans l'inspecteur la valeur des dommages de l'ennemi
     [Header("ajuster les attaques")]
     public float dommagesAttaque;
-    
+
 
     //paramétrer le délai avant que le ennemi puisse attaquer
     [Header("Temps entre les attaques")]
     public float configDelai;
-    public float delaiAttaque = 0;  
+    public float delaiAttaque = 0;
 
     //obtenir la vélocité du navmeshagent (de l'ennemi) pour effectuer plusieurs vérifications
     [Header("vitesse")]
@@ -49,13 +49,22 @@ public class ScriptEnnemi : MonoBehaviour
     public bool enMouvement = false;
 
     //créer une variable pour tenir la distance entre 2 entitées pour effectuer des calculs
-    public float distanceJoueur; 
+    public float distanceJoueur;
 
     //gérer la distance minimum avant que l'ennemi agresse le joueur
     public float distanceAgression = 10;
 
     //pour détecter si l'ennemi est en "aggro" avec le joueur pour qu'il se mette à le poursuivre
     public bool agresseJoueur = false;
+
+    //référence au clip de son de blessure de l'ennemi
+    public AudioClip sonBlesse;
+
+    //référence au clip de son de mort de l'ennemi
+    public AudioClip sonMort;
+
+    //référence au clip de son d'attaque de l'ennemi
+    public AudioClip sonAttaque;
 
     #endregion
 
@@ -67,30 +76,34 @@ public class ScriptEnnemi : MonoBehaviour
         //assigner le composant animator pour gérer les animations
         animEnnemi = gameObject.GetComponent<Animator>();
 
-        if(gameObject.TryGetComponent(out Animator leAnim)) {
+        if (gameObject.TryGetComponent(out Animator leAnim))
+        {
             animEnnemi = leAnim;
         }
-        else {
-           animEnnemi = gameObject.GetComponentInChildren<Animator>();
+        else
+        {
+            animEnnemi = gameObject.GetComponentInChildren<Animator>();
         }
 
         //aller chercher le joueur comme cible de défaut par find si il n'est pas établi dans l'inspecteur
         cibleAttaque = GameObject.Find("joueur");
-        
+
 
         //initialiser la vie actuelle
         vieActuelle = vieMaximum;
-        
+
     }
 
-    
+
     void Update()
     {
-        
+
 
         DetectionEtatVie();
 
-        if(!estMort) {
+        if (!estMort)
+        {
+
 
             //obtenir la vélocité de l'ennemi
             velociteEnnemi = agentEnnemi.velocity;
@@ -98,7 +111,8 @@ public class ScriptEnnemi : MonoBehaviour
             //calcul de la distance entre l'ennemi et le joueur
             distanceJoueur = DistanceAvecCible(cibleAttaque);
 
-            if(distanceJoueur < distanceAgression) {
+            if (distanceJoueur < distanceAgression)
+            {
                 agresseJoueur = true;
             }
 
@@ -106,25 +120,30 @@ public class ScriptEnnemi : MonoBehaviour
 
             Bouger();
 
-            if(toucheJoueur && delaiAttaque <= 0) {
+            if (toucheJoueur && delaiAttaque <= 0)
+            {
                 Attaquer(cibleAttaque);
             }
 
         }
-    
-        
+
+
     }
 
-    private void OnCollisionEnter(Collision autreObjet) {
-        
-        if(autreObjet.gameObject.name == "joueur"){
+    private void OnCollisionEnter(Collision autreObjet)
+    {
+
+        if (autreObjet.gameObject.name == "joueur")
+        {
             toucheJoueur = true;
         }
     }
 
-    private void OnCollisionExit(Collision autreObjet) {
-        
-        if(autreObjet.gameObject.name == "joueur"){
+    private void OnCollisionExit(Collision autreObjet)
+    {
+
+        if (autreObjet.gameObject.name == "joueur")
+        {
             toucheJoueur = false;
         }
     }
@@ -132,25 +151,28 @@ public class ScriptEnnemi : MonoBehaviour
     //méthode pour bouger l'ennemi
     public void Bouger()
     {
-        if(agresseJoueur)
+        if (agresseJoueur)
         {//si la distance est de 4 unités ou plus, bouger l'ennemi vers le personnage
-        if (distanceJoueur >= 2)
-        {
-            //positionner l'ennemi vers la position du joueur
-            agentEnnemi.SetDestination(cibleAttaque.transform.position);
+            if (distanceJoueur >= 2)
+            {
+                //positionner l'ennemi vers la position du joueur
+                agentEnnemi.SetDestination(cibleAttaque.transform.position);
+            }
+
+            //regarder vers le joueur
+            transform.LookAt(cibleAttaque.transform);
+
+            if (velociteEnnemi.magnitude > 0)
+            {
+                animEnnemi.SetFloat("Marche", velociteEnnemi.magnitude);
+            }
         }
 
-        //regarder vers le joueur
-        transform.LookAt(cibleAttaque.transform);
-
-        if(velociteEnnemi.magnitude > 0) {
-            animEnnemi.SetFloat("Marche", velociteEnnemi.magnitude);
-        }}
-        
     }
 
     //retourne la distance entre le ennemi et la cible
-    public float DistanceAvecCible(GameObject cible) {
+    public float DistanceAvecCible(GameObject cible)
+    {
         return Vector3.Distance(transform.position, cible.transform.position);
     }
 
@@ -167,6 +189,14 @@ public class ScriptEnnemi : MonoBehaviour
         //si l'animation d'attaque est finie
         if (!animEnnemi.GetCurrentAnimatorStateInfo(0).IsTag("attaque"))
         {
+
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                //jouer un son d'attaque
+                GetComponent<AudioSource>().PlayOneShot(sonAttaque);
+            }
+
+
             //causer des dommages à la cible
             cible.GetComponent<ControlePerso>().viePersonnage -= dommagesAttaque;
 
@@ -177,13 +207,14 @@ public class ScriptEnnemi : MonoBehaviour
     }
 
     //gère le délai entre chaque attaque
-    public void TimerAttaque() {
+    public void TimerAttaque()
+    {
         //tant que le décompte n'a pas atteint 0 secondes
-            if (delaiAttaque >= 0)
-            {
-                //enlever 1 seconde au décompte
-                delaiAttaque -= Time.deltaTime;
-            }
+        if (delaiAttaque >= 0)
+        {
+            //enlever 1 seconde au décompte
+            delaiAttaque -= Time.deltaTime;
+        }
     }
 
     //méthode pour détruire l'entitée
@@ -193,9 +224,10 @@ public class ScriptEnnemi : MonoBehaviour
         Destroy(gameObject);
     }
 
-//si la vie actuelle de l'entitée atteint 0, il meurt
-    public void DetectionEtatVie() {
-        
+    //si la vie actuelle de l'entitée atteint 0, il meurt
+    public void DetectionEtatVie()
+    {
+
         if (vieActuelle <= 0)
         {
             Mourir();
@@ -203,31 +235,49 @@ public class ScriptEnnemi : MonoBehaviour
     }
 
     //gestion de la mort du ennemi
-    public void Mourir() {
-        
-            //l'entitée est morte
-            estMort = true;
+    public void Mourir()
+    {
 
-            //désactiver le navmesh agent
-            agentEnnemi.enabled = false;
+        //l'entitée est morte
+        estMort = true;
 
-            //désactiver les autres animations
-            animEnnemi.SetFloat("Marche", 0);
+        //désactiver le navmesh agent
+        agentEnnemi.enabled = false;
 
-            //déclencher l'animation de mort
-            animEnnemi.SetTrigger("Mort");
+        //désactiver les autres animations
+        animEnnemi.SetFloat("Marche", 0);
 
-            //désactiver le survol de la souris pour ne pas que le texte reste à l'écran
-            Destroy(gameObject.GetComponent<survolSouris>().instanceTexte);
+        //déclencher l'animation de mort
+        animEnnemi.SetTrigger("Mort");
 
-            Destroy(gameObject.GetComponent<survolSouris>().instanceBarreVie);
-
-            //si l'animation de mort est terminée
-            if (!animEnnemi.GetCurrentAnimatorStateInfo(0).IsTag("mourir"))
-            {
-                //détruire l'entitée
-                Invoke("DetruireEntite", 2f);
+        //jouer un son de mort
+        if(!GetComponent<AudioSource>().isPlaying) {
+                //jouer un son d'attaque
+            GetComponent<AudioSource>().PlayOneShot(sonMort);
             }
-        
+
+        //désactiver le survol de la souris pour ne pas que le texte reste à l'écran
+        Destroy(gameObject.GetComponent<survolSouris>().instanceTexte);
+
+        Destroy(gameObject.GetComponent<survolSouris>().instanceBarreVie);
+
+        //si l'animation de mort est terminée
+        if (!animEnnemi.GetCurrentAnimatorStateInfo(0).IsTag("mourir"))
+        {
+            //détruire l'entitée
+            Invoke("DetruireEntite", 2f);
+        }
+
+    }
+
+    public void SonBlesse()
+    {
+        //jouer un son blessé
+
+        if(!GetComponent<AudioSource>().isPlaying) {
+                //jouer un son d'attaque
+            GetComponent<AudioSource>().PlayOneShot(sonBlesse);
+            }
+
     }
 }
