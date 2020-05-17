@@ -116,20 +116,22 @@ public class InstancierAuxPoints : MonoBehaviour
         {
             agentInstance.enabled = false;
             agentInstance.enabled = true;
+
+            //variable pour savoir ou est le point le plus proche disponible
+            NavMeshHit pointLePlusProche;
+
+            //on change la position de l'objet si on détecte que la position est déja occupée par un autre AI
+            if (NavMesh.SamplePosition(instanceObjet.transform.position, out pointLePlusProche, 10f, NavMesh.AllAreas))
+            {
+                //changer sa position pour un point proche
+                instanceObjet.transform.position = pointLePlusProche.position;
+            }
         }
 
         //on lui donne le nom du prefab pour pas qu'il soit appelé "objet(clone)"
         instanceObjet.gameObject.name = prefabAleatoire.gameObject.name;
 
-        //variable pour savoir ou est le point le plus proche disponible
-        NavMeshHit pointLePlusProche;
 
-        //on change la position de l'objet si on détecte que la position est déja occupée par un autre AI
-        if (NavMesh.SamplePosition(instanceObjet.transform.position, out pointLePlusProche, 10f, NavMesh.AllAreas))
-        {
-            //changer sa position pour un point proche
-            instanceObjet.transform.position = pointLePlusProche.position;
-        }
 
         //on ajoute l'objet instancié à la liste d'objets instanciés
         listeObjetsInstances.Add(instanceObjet);
