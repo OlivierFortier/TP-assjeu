@@ -9,12 +9,15 @@ using UnityEngine;
 public class LesPotions : MonoBehaviour
 {
     [Header("Type de potion")]
-
+    //est-ce une potion de vie ?
     public bool potionDeVie = true;
-
+    //est-ce une potion de vitesse ?
     public bool potionDeVitesse = false;
-
+    //est-ce une potion de force ?
     public bool potionDeForce = false;
+
+    //référence au son de potion quand le joueur en prends une
+    public AudioClip sonPotion;
 
     [Header("Config potion vie")]
     //configuer combien de vie on veut que la potion restaure dans l'éditeur
@@ -33,6 +36,9 @@ public class LesPotions : MonoBehaviour
     {
         //obtiens les références a la vie du perso
         var lePerso = GameObject.Find("joueur").GetComponent<ControlePerso>();
+
+        //jouer le son de potion
+        GetComponent<AudioSource>().PlayOneShot(sonPotion);
 
         //si c'est une potion de vie
         if (potionDeVie)

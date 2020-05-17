@@ -18,6 +18,9 @@ public class OuvrirPorte : MonoBehaviour
     //reconnaitre l'état de la porte
     public bool porteEstOuverte = false;
 
+    //référence au clip de son de la porte lorsque le joueur l'ouvre /ferme
+    public AudioClip sonPorte;
+
     //méthode pour effectuer une ouverture de porte selon la clé que le joueur possède
     public void OuvrirLaPorte()
     {
@@ -25,6 +28,9 @@ public class OuvrirPorte : MonoBehaviour
 
         if (!porteEstOuverte)
         {
+            //jouer le son de la porte
+            GetComponent<AudioSource>().PlayOneShot(sonPorte);
+
             //obtenir la référence au script de l'inventaire
             var inv = GameObject.Find("joueur").GetComponentInChildren<ScriptInventaire>();
 
@@ -61,6 +67,8 @@ public class OuvrirPorte : MonoBehaviour
         //si la porte est ouverte
         if (porteEstOuverte)
         {
+            //jouer le son de la porte
+            GetComponent<AudioSource>().PlayOneShot(sonPorte);
 
             //la porte se ferme par rotation
             porteAouvrir.transform.Rotate(new Vector3(0, -180f, 0), Space.Self);

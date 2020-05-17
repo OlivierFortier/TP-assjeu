@@ -36,8 +36,8 @@ public class ScriptInventaire : MonoBehaviour
             //ajouter l'icone de l'objet à l'inventaire
             AjouterImageInventaire(objet, tag);
 
-            //faire disparaitre l'objet (mais il reste dans l'inventaire)
-            objet.SetActive(false);
+            //partir le délai avant de désactiver l'objet
+            StartCoroutine(DisparaitreApresDelaiPourSon(objet));
 
             
         }
@@ -48,6 +48,13 @@ public class ScriptInventaire : MonoBehaviour
                     avertisseur.Avertir();
                 }
         }
+    }
+
+    //méthode pour faire disparaitre apres un court délai pour que le son aie le temps de jouer
+    public IEnumerator DisparaitreApresDelaiPourSon(GameObject objet) {
+        yield return new WaitForSeconds(0.5f);
+        //faire disparaitre l'objet (mais il reste dans l'inventaire)
+            objet.SetActive(false);
     }
 
     //méthode pour insérer l'icone dans l'inventaire du joueur lorsqu'il ramasse un objet

@@ -144,7 +144,7 @@ public class DeclencheurEvenement : MonoBehaviour
                 if (gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
 
                 //supprimer le déclencheur d'événement
-                Destroy(gameObject);
+                Destroy(gameObject, 0.5f);
             }
 
         }
@@ -172,7 +172,7 @@ public class DeclencheurEvenement : MonoBehaviour
                 //si on a un composant de survol, enlever l'information qu'elle affiche avant de détruire
                 if (gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
                 //supprimer le déclencheur d'événement
-                Destroy(gameObject);
+                Destroy(gameObject , 0.8f);
             }
 
         }
@@ -194,7 +194,7 @@ public class DeclencheurEvenement : MonoBehaviour
                 //si on a un composant de survol, enlever l'information qu'elle affiche avant de détruire
                 if (gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
                 //supprimer le déclencheur d'événement
-                Destroy(gameObject);
+                Destroy(gameObject, 0.8f);
             }
 
         }
@@ -213,7 +213,7 @@ public class DeclencheurEvenement : MonoBehaviour
                 //si on a un composant de survol, enlever l'information qu'elle affiche avant de détruire
                 if (gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
                 //supprimer le déclencheur d'événement
-                Destroy(gameObject);
+                Destroy(gameObject ,0.8f);
             }
 
         }
@@ -234,7 +234,7 @@ public class DeclencheurEvenement : MonoBehaviour
                 //si on a un composant de survol, enlever l'information qu'elle affiche avant de détruire
                 if (gameObject.TryGetComponent(out survolSouris survol)) survol.EnleverInfo();
                 //supprimer le déclencheur d'événement
-                Destroy(gameObject);
+                Destroy(gameObject, 0.8f);
             }
 
         }
