@@ -10767,41 +10767,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 212164561}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &212718328
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1148
-  m_Height: 236
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &213910181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15089,7 +15054,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 212718328}
+  m_TargetTexture: {fileID: 2081727672}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -20641,7 +20606,7 @@ PrefabInstance:
     - target: {fileID: 2259695654381312425, guid: 9ad35895cfe9dfa43ae04c747e8c297a,
         type: 3}
       propertyPath: m_Name
-      value: Homme-standard
+      value: Homme
       objectReference: {fileID: 0}
     - target: {fileID: 6341396535755955686, guid: 9ad35895cfe9dfa43ae04c747e8c297a,
         type: 3}
@@ -32545,41 +32510,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 775612623}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &781428192
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1148
-  m_Height: 236
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &789866206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45863,8 +45793,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 963194227}
   outlineCamera: {fileID: 326913960}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 212718328}
-  extraRenderTexture: {fileID: 781428192}
+  renderTexture: {fileID: 2081727672}
+  extraRenderTexture: {fileID: 1268953344}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46011,7 +45941,7 @@ PrefabInstance:
     - target: {fileID: 4004892523193435470, guid: 2ba669d96d09fef428f0e6483eb5aacf,
         type: 3}
       propertyPath: m_Name
-      value: Archer-femme
+      value: Citoyenne
       objectReference: {fileID: 0}
     - target: {fileID: 4004892523193435471, guid: 2ba669d96d09fef428f0e6483eb5aacf,
         type: 3}
@@ -48660,7 +48590,7 @@ PrefabInstance:
     - target: {fileID: 471157008564043096, guid: 0d2cfe2ee0241db479ff78a31a950901,
         type: 3}
       propertyPath: m_Name
-      value: Femme-Paysanne
+      value: Paysanne
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d2cfe2ee0241db479ff78a31a950901, type: 3}
@@ -55658,6 +55588,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1268586117}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1268953344
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1185
+  m_Height: 236
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1286792995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91915,6 +91880,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2079988454}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &2081727672
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1185
+  m_Height: 236
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &2084587084
 PrefabInstance:
   m_ObjectHideFlags: 0
